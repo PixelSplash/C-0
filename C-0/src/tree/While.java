@@ -1,0 +1,40 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package tree;
+
+/**
+ *
+ * @author sescalo
+ */
+public class While extends Tree{
+    Tree left;
+    Tree right;
+    
+    public While(Tree l, Tree r){
+        left = l;
+        right = r;
+    }
+    
+    public Integer eval(Environment e) {
+        while(left.eval(e) == 1){
+            right.eval(e);
+            if(e.lookup("break")==1){
+                e.set("break", 0);
+                break;
+            }
+        }
+        return 1;
+    }
+    
+    public void print() {
+        System.out.print("(WHILE ");
+        left.print();
+        System.out.print(", ");
+        right.print();
+        System.out.print(")");
+    }
+    
+}

@@ -1,0 +1,8 @@
+# =============== #
+#     Netbeans    #
+# =============== #
+build/
+nbproject/
+test/
+build.xml
+manifes.mf

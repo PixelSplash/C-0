@@ -1,0 +1,66 @@
+package calculatorcup;
+
+import java_cup.runtime.*;
+import tree.*;
+
+terminal            PLUS, MINUS, MUL, DIV, ASSIGN, OR, AND, EQUAL, NOTEQUAL, MINOR, MAYOR, BOOL, IF, WHILE, ELSE;
+terminal            LPAREN, RPAREN, LBRACKET, RBRACKET, QUOTE, SEMICOLON, MAIN, PUTW, PUTS, BREAK;
+terminal Integer    INT;
+terminal String     IDENT, STRING;
+
+
+non terminal Tree expr;
+
+precedence left OR, AND;
+precedence left EQUAL, NOTEQUAL;
+precedence left MINOR, MAYOR;
+precedence left PLUS, MINUS;
+precedence left MUL, DIV;
+precedence left LPAREN, RPAREN, LBRACKET, RBRACKET, QUOTE, SEMICOLON, MAIN, PUTW, PUTS, BREAK;
+precedence left ASSIGN;
+
+
+expr          ::= expr:e1 PLUS expr:e2 
+                    {: RESULT = new Plus(e1, e2); :}
+                | expr:e1 MINUS expr:e2
+                    {: RESULT = new Minus(e1, e2); :}
+                | expr:e1 MUL expr:e2
+                    {: RESULT = new Multiply(e1, e2); :}
+                | expr:e1 DIV expr:e2
+                    {: RESULT = new Divide(e1, e2); :}
+                | LPAREN expr:e RPAREN
+                    {: RESULT = e; :}
+                | expr:e1 MINOR expr:e2
+                    {: RESULT = new Minor(e1, e2); :}
+                | expr:e1 MAYOR expr:e2
+                    {: RESULT = new Mayor(e1, e2); :}
+                | expr:e1 AND expr:e2
+                    {: RESULT = new And(e1, e2); :}
+                | expr:e1 OR expr:e2
+                    {: RESULT = new Or(e1, e2); :}
+                | expr:e1 EQUAL expr:e2
+                    {: RESULT = new Equal(e1, e2); :}
+                | expr:e1 NOTEQUAL expr:e2
+                    {: RESULT = new Notequal(e1, e2); :}
+                | IF LPAREN expr:e RPAREN LBRACKET expr:e1 RBRACKET ELSE LBRACKET expr:e2 RBRACKET
+                    {: RESULT = new If(e, e1, e2, 1); :}
+                | IF LPAREN expr:e RPAREN LBRACKET expr:e1 RBRACKET
+                    {: RESULT = new If(e, e1, e1, 0); :}
+                | WHILE LPAREN expr:e RPAREN LBRACKET expr:e1 RBRACKET
+                    {: RESULT = new While(e,e1); :}
+                | MAIN LPAREN RPAREN LBRACKET expr:e1 RBRACKET
+                    {: RESULT = new Main(e1); :}
+                | PUTW LPAREN expr:e1 RPAREN SEMICOLON
+                    {: RESULT = new Putw(e1); :}
+                | BREAK SEMICOLON
+                    {: RESULT = new Break(); :}
+                | IDENT:s ASSIGN expr:e SEMICOLON
+                    {: RESULT = new Assignment(s, e); :}
+                | IDENT:s
+                    {: RESULT = new Identifier(s); :}
+                | INT:n
+                    {: RESULT = new Literal(n); :}
+                | PUTS LPAREN STRING:s RPAREN SEMICOLON
+                    {: RESULT = new Puts(s); :}
+
+                ;

@@ -45,6 +45,8 @@ public class TestFrame extends javax.swing.JFrame {
         
     public TestFrame() {
         initComponents();
+        getContentPane().setBackground(new Color(100,145,104));
+        getContentPane().setForeground(new Color(100,145,104));
     }
 
     /**
@@ -74,42 +76,54 @@ public class TestFrame extends javax.swing.JFrame {
         Compile = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setBackground(new java.awt.Color(108, 81, 81));
+        setBackground(new java.awt.Color(0, 255, 51));
 
         CodePanel.setBackground(new java.awt.Color(108, 81, 81));
 
+        TokenPanel.setBackground(new java.awt.Color(100, 145, 104));
+        TokenPanel.setForeground(new java.awt.Color(100, 145, 104));
+
+        jScrollPane4.setBorder(null);
+
         jTextArea4.setEditable(false);
-        jTextArea4.setBackground(new java.awt.Color(108, 81, 81));
+        jTextArea4.setBackground(new java.awt.Color(141, 154, 92));
         jTextArea4.setColumns(20);
-        jTextArea4.setForeground(new java.awt.Color(255, 255, 255));
+        jTextArea4.setForeground(new java.awt.Color(100, 145, 104));
         jTextArea4.setRows(5);
+        jTextArea4.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         jScrollPane4.setViewportView(jTextArea4);
 
         javax.swing.GroupLayout TokenPanelLayout = new javax.swing.GroupLayout(TokenPanel);
         TokenPanel.setLayout(TokenPanelLayout);
         TokenPanelLayout.setHorizontalGroup(
             TokenPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane4)
+            .addGroup(TokenPanelLayout.createSequentialGroup()
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 341, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         TokenPanelLayout.setVerticalGroup(
             TokenPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 685, Short.MAX_VALUE)
+            .addComponent(jScrollPane4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 673, Short.MAX_VALUE)
         );
 
+        TerminalPanel.setBackground(new java.awt.Color(100, 145, 104));
+        TerminalPanel.setForeground(new java.awt.Color(100, 145, 104));
+
+        jScrollPane3.setBorder(null);
+
         jTextArea3.setEditable(false);
-        jTextArea3.setBackground(new java.awt.Color(108, 81, 81));
+        jTextArea3.setBackground(new java.awt.Color(141, 154, 92));
         jTextArea3.setColumns(20);
-        jTextArea3.setForeground(new java.awt.Color(255, 255, 255));
+        jTextArea3.setForeground(new java.awt.Color(100, 145, 104));
         jTextArea3.setRows(5);
+        jTextArea3.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         jScrollPane3.setViewportView(jTextArea3);
 
         javax.swing.GroupLayout TerminalPanelLayout = new javax.swing.GroupLayout(TerminalPanel);
         TerminalPanel.setLayout(TerminalPanelLayout);
         TerminalPanelLayout.setHorizontalGroup(
             TerminalPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(TerminalPanelLayout.createSequentialGroup()
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 694, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(jScrollPane3, javax.swing.GroupLayout.Alignment.TRAILING)
         );
         TerminalPanelLayout.setVerticalGroup(
             TerminalPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -181,28 +195,30 @@ public class TestFrame extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(CodePanel, javax.swing.GroupLayout.DEFAULT_SIZE, 681, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(TerminalPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(CodePanel))
-                .addGap(0, 0, 0)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(TokenPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(TakensLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 342, Short.MAX_VALUE)
-                        .addGap(2, 2, 2))))
+                        .addGap(5, 5, 5)
+                        .addComponent(TerminalPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addGap(3, 3, 3)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(TakensLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 342, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(TokenPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(CodePanel, javax.swing.GroupLayout.PREFERRED_SIZE, 582, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, 0)
-                .addComponent(TerminalPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(4, 4, 4)
-                .addComponent(TakensLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(TokenPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(CodePanel, javax.swing.GroupLayout.PREFERRED_SIZE, 582, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(TerminalPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(4, 4, 4)
+                        .addComponent(TakensLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(TokenPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap())
         );
 
         pack();
@@ -229,7 +245,7 @@ public class TestFrame extends javax.swing.JFrame {
         
         jTextArea2.setColumns(20);
         jTextArea2.setRows(5);
-        jTextArea2.setBackground(new Color(108,81,81));
+        jTextArea2.setBackground(new Color(42,130,121));
         jTextArea2.setForeground(new Color(255,255,255));
         jScrollPane2.setViewportView(jTextArea2);
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -352,6 +368,8 @@ public class TestFrame extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
+        
+        
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new TestFrame().setVisible(true);

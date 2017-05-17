@@ -74,17 +74,16 @@ String         = \".*\"
                     }
     {String}        { 
                         String temp = yytext();
-                        tokenPool.add(temp);
-                        putsOutput.add(temp);
+                        tokenPool.add("STRING, " + temp);
                         return symbol(sym.STRING, temp); 
                     } 
     {Number}        { 
                         String temp = yytext();
-                        tokenPool.add(temp);
+                        tokenPool.add("NUMBER, " + temp);
                         return symbol(sym.INT, new Integer(Integer.parseInt(temp))); }
     {Identifier}    { 
                         String temp = yytext();
-                        tokenPool.add(temp);
+                        tokenPool.add("INDENT, " + temp);
                         return symbol(sym.IDENT, temp); 
                     }   
     "+"             { 

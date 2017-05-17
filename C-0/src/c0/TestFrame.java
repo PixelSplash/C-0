@@ -9,7 +9,9 @@ import java.awt.Color;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.PrintWriter;
 import java.io.StringReader;
+import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.logging.Level;
@@ -35,6 +37,7 @@ public class TestFrame extends javax.swing.JFrame {
     File file;
     String line;
     Scanner scan;
+    PrintWriter writer;
     private JScrollPane jScrollPane2;
     private JTextArea jTextArea2;
     private JPanel jPanel1;
@@ -131,6 +134,11 @@ public class TestFrame extends javax.swing.JFrame {
 
         Save.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_S, java.awt.event.InputEvent.CTRL_MASK));
         Save.setText("Save");
+        Save.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                SaveActionPerformed(evt);
+            }
+        });
         FileMenu.add(Save);
 
         Close.setText("Close");
@@ -297,6 +305,21 @@ public class TestFrame extends javax.swing.JFrame {
     private void CompileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CompileActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_CompileActionPerformed
+
+    private void SaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SaveActionPerformed
+        
+        try {
+            writer = new PrintWriter(file.getPath(), "UTF-8");
+            //scan.close();
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(TestFrame.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (UnsupportedEncodingException ex) {
+            Logger.getLogger(TestFrame.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        writer.print(jTextArea2.getText());
+        writer.close();
+        
+    }//GEN-LAST:event_SaveActionPerformed
 
     /**
      * @param args the command line arguments

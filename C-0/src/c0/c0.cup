@@ -1,4 +1,4 @@
-package calculatorcup;
+package c0;
 
 import java_cup.runtime.*;
 import tree.*;

@@ -8,7 +8,7 @@ terminal            LPAREN, RPAREN, LBRACKET, RBRACKET, QUOTE, SEMICOLON, MAIN, 
 terminal Integer    INT;
 terminal String     IDENT, STRING;
 
-
+non terminal Tree expr_list;
 non terminal Tree expr;
 
 precedence left OR, AND;
@@ -19,7 +19,9 @@ precedence left MUL, DIV;
 precedence left LPAREN, RPAREN, LBRACKET, RBRACKET, QUOTE, SEMICOLON, MAIN, PUTW, PUTS, BREAK;
 precedence left ASSIGN;
 
-
+expr_list ::= expr_list:e expr:e1        {: RESULT = new MultiExp(e,e1, 1); :}
+            | expr:e                     {: RESULT = new MultiExp(e,e, 0); :}
+;
 expr          ::= expr:e1 PLUS expr:e2 
                     {: RESULT = new Plus(e1, e2); :}
                 | expr:e1 MINUS expr:e2
@@ -42,13 +44,13 @@ expr          ::= expr:e1 PLUS expr:e2
                     {: RESULT = new Equal(e1, e2); :}
                 | expr:e1 NOTEQUAL expr:e2
                     {: RESULT = new Notequal(e1, e2); :}
-                | IF LPAREN expr:e RPAREN LBRACKET expr:e1 RBRACKET ELSE LBRACKET expr:e2 RBRACKET
+                | IF LPAREN expr:e RPAREN LBRACKET expr_list:e1 RBRACKET ELSE LBRACKET expr_list:e2 RBRACKET
                     {: RESULT = new If(e, e1, e2, 1); :}
-                | IF LPAREN expr:e RPAREN LBRACKET expr:e1 RBRACKET
+                | IF LPAREN expr:e RPAREN LBRACKET expr_list:e1 RBRACKET
                     {: RESULT = new If(e, e1, e1, 0); :}
-                | WHILE LPAREN expr:e RPAREN LBRACKET expr:e1 RBRACKET
+                | WHILE LPAREN expr:e RPAREN LBRACKET expr_list:e1 RBRACKET
                     {: RESULT = new While(e,e1); :}
-                | MAIN LPAREN RPAREN LBRACKET expr:e1 RBRACKET
+                | MAIN LPAREN RPAREN LBRACKET expr_list:e1 RBRACKET
                     {: RESULT = new Main(e1); :}
                 | PUTW LPAREN expr:e1 RPAREN SEMICOLON
                     {: RESULT = new Putw(e1); :}
@@ -62,5 +64,4 @@ expr          ::= expr:e1 PLUS expr:e2
                     {: RESULT = new Literal(n); :}
                 | PUTS LPAREN STRING:s RPAREN SEMICOLON
                     {: RESULT = new Puts(s); :}
-
                 ;

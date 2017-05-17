@@ -79,6 +79,7 @@ public class TestFrame extends javax.swing.JFrame {
         setBackground(new java.awt.Color(0, 255, 51));
 
         CodePanel.setBackground(new java.awt.Color(108, 81, 81));
+        CodePanel.setForeground(new java.awt.Color(255, 255, 255));
 
         TokenPanel.setBackground(new java.awt.Color(100, 145, 104));
         TokenPanel.setForeground(new java.awt.Color(100, 145, 104));
@@ -88,7 +89,7 @@ public class TestFrame extends javax.swing.JFrame {
         jTextArea4.setEditable(false);
         jTextArea4.setBackground(new java.awt.Color(141, 154, 92));
         jTextArea4.setColumns(20);
-        jTextArea4.setForeground(new java.awt.Color(100, 145, 104));
+        jTextArea4.setForeground(new java.awt.Color(255, 255, 255));
         jTextArea4.setRows(5);
         jTextArea4.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         jScrollPane4.setViewportView(jTextArea4);
@@ -114,7 +115,7 @@ public class TestFrame extends javax.swing.JFrame {
         jTextArea3.setEditable(false);
         jTextArea3.setBackground(new java.awt.Color(141, 154, 92));
         jTextArea3.setColumns(20);
-        jTextArea3.setForeground(new java.awt.Color(100, 145, 104));
+        jTextArea3.setForeground(new java.awt.Color(255, 255, 255));
         jTextArea3.setRows(5);
         jTextArea3.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         jScrollPane3.setViewportView(jTextArea3);

@@ -5,19 +5,24 @@
  */
 package tree;
 
+import c0.Global;
 /**
  *
  * @author sescalo
  */
 public class Putw extends Tree{
     Tree expression;
+    Global global = new Global();
     
     public Putw(Tree exp){
         expression = exp;
     }
     
     public Integer eval(Environment e) {
-        return expression.eval(e);
+        
+        Integer ret = expression.eval(e);
+        global.outputs.add(ret.toString());
+        return ret;
     }
     
     public void print() {

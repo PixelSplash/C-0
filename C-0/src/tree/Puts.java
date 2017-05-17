@@ -5,19 +5,21 @@
  */
 package tree;
 
+import c0.Global;
+
 /**
  *
  * @author sescalo
  */
 public class Puts extends Tree{
     private String expression;
-    
+    Global global = new Global();
     public Puts(String exp){
         expression = exp;
     }
     
     public Integer eval(Environment e) {
-        System.out.println(expression);
+        global.outputs.add(expression);
         return 0;
     }
     

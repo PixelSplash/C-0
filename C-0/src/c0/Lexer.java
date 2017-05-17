@@ -252,8 +252,6 @@ class Lexer implements java_cup.runtime.Scanner {
   private boolean zzEOFDone;
 
   /* user code: */
-    ArrayList<String> tokenPool = new ArrayList<String>();
-    ArrayList<String> putsOutput = new ArrayList<String>();
 
     private Symbol symbol(int type) {
         return new Symbol(type, yyline, yycolumn);
@@ -262,13 +260,7 @@ class Lexer implements java_cup.runtime.Scanner {
         return new Symbol(type, yyline, yycolumn, value);
     }
 
-    public ArrayList<String> getTokenPool(){
-        return this.tokenPool;
-    }
-
-    public ArrayList<String> getPutsOutput(){
-        return this.putsOutput;
-    }
+    Global global = new Global();
 
 
   /**
@@ -632,83 +624,83 @@ class Lexer implements java_cup.runtime.Scanner {
 
       switch (zzAction < 0 ? zzAction : ZZ_ACTION[zzAction]) {
         case 14: 
-          { tokenPool.add("MAYOR");
+          { global.tokenPool.add("MAYOR");
                         return symbol(sym.MAYOR);
           }
         case 30: break;
         case 23: 
-          { tokenPool.add("AND");
+          { global.tokenPool.add("AND");
                         return symbol(sym.AND);
           }
         case 31: break;
         case 17: 
-          { tokenPool.add("RBRACKET");
+          { global.tokenPool.add("RBRACKET");
                         return symbol(sym.RBRACKET);
           }
         case 32: break;
         case 3: 
           { String temp = yytext();
-                        tokenPool.add(temp);
+                        global.tokenPool.add(temp);
                         return symbol(sym.INT, new Integer(Integer.parseInt(temp)));
           }
         case 33: break;
         case 15: 
-          { tokenPool.add("SEMICOLON");
+          { global.tokenPool.add("SEMICOLON");
                         return symbol(sym.SEMICOLON);
           }
         case 34: break;
         case 26: 
-          { tokenPool.add("PUTW");
+          { global.tokenPool.add("PUTW");
                         return symbol(sym.PUTW);
           }
         case 35: break;
         case 8: 
-          { tokenPool.add("MUL");
+          { global.tokenPool.add("MUL");
                         return symbol(sym.MUL);
           }
         case 36: break;
         case 21: 
-          { tokenPool.add("NOTEQUAL");
+          { global.tokenPool.add("NOTEQUAL");
                         return symbol(sym.NOTEQUAL);
           }
         case 37: break;
         case 11: 
-          { tokenPool.add("RPAREN");
+          { global.tokenPool.add("RPAREN");
                         return symbol(sym.RPAREN);
           }
         case 38: break;
         case 19: 
-          { tokenPool.add("IF");
+          { global.tokenPool.add("IF");
                         return symbol(sym.IF);
           }
         case 39: break;
         case 20: 
-          { tokenPool.add("EQUAL");
+          { global.tokenPool.add("EQUAL");
                         return symbol(sym.EQUAL);
           }
         case 40: break;
         case 24: 
-          { tokenPool.add("ELSE");
+          { global.tokenPool.add("ELSE");
                         return symbol(sym.ELSE);
           }
         case 41: break;
         case 28: 
-          { tokenPool.add("BREAK");
+          { global.tokenPool.add("BREAK");
                         return symbol(sym.BREAK);
           }
         case 42: break;
         case 9: 
-          { tokenPool.add("DIV");
+          { global.tokenPool.add("DIV");
                         return symbol(sym.DIV);
           }
         case 43: break;
         case 5: 
-          { tokenPool.add("QUOTE");
+          { global.tokenPool.add("QUOTE");
                         return symbol(sym.QUOTE);
           }
         case 44: break;
         case 10: 
-          { tokenPool.add("LPAREN");
+          { global.tokenPool.add("LPAREN");
                         return symbol(sym.LPAREN);
           }
         case 45: break;
@@ -717,55 +709,55 @@ class Lexer implements java_cup.runtime.Scanner {
           }
         case 46: break;
         case 12: 
-          { tokenPool.add("ASSIGN");
+          { global.tokenPool.add("ASSIGN");
                         return symbol(sym.ASSIGN);
           }
         case 47: break;
         case 4: 
           { String temp = yytext();
-                        tokenPool.add(temp);
+                        global.tokenPool.add("IDENT, " + temp);
                         return symbol(sym.IDENT, temp);
           }
         case 48: break;
         case 22: 
-          { tokenPool.add("OR");
+          { global.tokenPool.add("OR");
                         return symbol(sym.OR);
           }
         case 49: break;
         case 29: 
-          { tokenPool.add("WHILE");
+          { global.tokenPool.add("WHILE");
                         return symbol(sym.WHILE);
           }
         case 50: break;
         case 18: 
           { String temp = yytext();
-                        tokenPool.add(temp);
-                        putsOutput.add(temp);
+                        global.tokenPool.add("STRING, " + temp);
+                        //global.outputs.add(temp);
                         return symbol(sym.STRING, temp);
           }
         case 51: break;
         case 27: 
-          { tokenPool.add("PUTS");
+          { global.tokenPool.add("PUTS");
                         return symbol(sym.PUTS);
           }
         case 52: break;
         case 7: 
-          { tokenPool.add("MINUS");
+          { global.tokenPool.add("MINUS");
                         return symbol(sym.MINUS);
           }
         case 53: break;
         case 13: 
-          { tokenPool.add("MINOR");
+          { global.tokenPool.add("MINOR");
                         return symbol(sym.MINOR);
           }
         case 54: break;
         case 6: 
-          { tokenPool.add("PLUS");
+          { global.tokenPool.add("PLUS");
                         return symbol(sym.PLUS);
           }
         case 55: break;
         case 25: 
-          { tokenPool.add("MAIN");
+          { global.tokenPool.add("MAIN");
                         return symbol(sym.MAIN);
           }
         case 56: break;
@@ -774,7 +766,7 @@ class Lexer implements java_cup.runtime.Scanner {
           }
         case 57: break;
         case 16: 
-          { tokenPool.add("LBRACKET");
+          { global.tokenPool.add("LBRACKET");
                         return symbol(sym.LBRACKET);
           }
         case 58: break;

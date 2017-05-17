@@ -16,7 +16,7 @@ import tree.Tree;
  * @author sescalo
  */
 public class CalcuCup extends javax.swing.JPanel {
-
+    Global global = new Global();
     /**
      * Creates new form CalcuCup
      */
@@ -104,12 +104,12 @@ public class CalcuCup extends javax.swing.JPanel {
             env.print();
             tree.print();
             
-            ArrayList<String> tokenPool = lexer.getTokenPool();
+            ArrayList<String> tokenPool = Global.tokenPool;
             for(String x : tokenPool){
                 System.out.println(x);
             }
             System.out.println("SALIDAS:");
-            ArrayList<String> putsOutput = lexer.getPutsOutput();
+            ArrayList<String> putsOutput = Global.outputs;
             for(String x : putsOutput){
                 System.out.println(x);
             }

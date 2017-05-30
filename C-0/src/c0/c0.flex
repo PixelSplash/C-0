@@ -72,6 +72,10 @@ String         = \".*\"
                         tokenPool.add("PUTS");
                         return symbol(sym.PUTS); 
                     }
+    "int"           {
+                        tokenPool.add("INTT");
+                        return symbol(sym.INTT);
+                    }
     {String}        { 
                         String temp = yytext();
                         tokenPool.add("STRING, " + temp);

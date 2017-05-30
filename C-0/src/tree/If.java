@@ -24,11 +24,15 @@ public class If extends Tree{
     
     public Integer eval(Environment e) {
         if(condition.eval(e) == 1){
+            e.newScopeTable();
             return left.eval(e);
+            
         }
         else if(flag == 1){
+            e.newScopeTable();
             return right.eval(e);
         }
+        e.deleteLastScopeTable();
         return 0;
     }
     

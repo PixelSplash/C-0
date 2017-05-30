@@ -663,7 +663,7 @@ class Lexer implements java_cup.runtime.Scanner {
           { global.tokenPool.add("NOTEQUAL");
                         return symbol(sym.NOTEQUAL);
           }
-        case 37: break;
+        case 37: break; 
         case 11: 
           { global.tokenPool.add("RPAREN");
                         return symbol(sym.RPAREN);

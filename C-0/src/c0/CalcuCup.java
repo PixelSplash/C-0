@@ -101,7 +101,7 @@ public class CalcuCup extends javax.swing.JPanel {
 
             Tree tree = (Tree) s.value;
             
-            env.print();
+            //env.print();
             tree.print();
             
             ArrayList<String> tokenPool = Global.tokenPool;

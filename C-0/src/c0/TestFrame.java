@@ -285,7 +285,7 @@ public class TestFrame extends javax.swing.JFrame {
 
                 Tree tree = (Tree) s.value;
 
-                env.print();
+                //env.print();
                 tree.print();
 
            

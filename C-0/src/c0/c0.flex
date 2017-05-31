@@ -29,6 +29,8 @@ import java.util.ArrayList;
     public ArrayList<String> getPutsOutput(){
         return this.putsOutput;
     }
+
+    Global global = new Global();
 %}
 
 LineTerminator = \r|\n|\r\n
@@ -39,123 +41,123 @@ Digit          = [0-9]
 Number         = {Digit} {Digit}*
 Letter         = [a-zA-Z]
 Identifier     = {Letter} ({Letter}|{Digit})* 
-String         = \".*\" 
+String         = \"([\x20-\x21\x23-\xFE])*\" 
 
 %%
 
 <YYINITIAL> { 
     "break"         { 
-                        tokenPool.add("BREAK");
+                        global.tokenPool.add("BREAK");
                         return symbol(sym.BREAK); 
                     }
     "main"          { 
-                        tokenPool.add("MAIN");
+                        global.tokenPool.add("MAIN");
                         return symbol(sym.MAIN); 
                     }
     "if"            { 
-                        tokenPool.add("IF");
+                        global.tokenPool.add("IF");
                         return symbol(sym.IF); 
                     }
     "while"         { 
-                        tokenPool.add("WHILE");
+                        global.tokenPool.add("WHILE");
                         return symbol(sym.WHILE); 
                     }
     "else"          { 
-                        tokenPool.add("ELSE");
+                        global.tokenPool.add("ELSE");
                         return symbol(sym.ELSE); 
                     }
     "putw"          { 
-                        tokenPool.add("PUTW");
+                        global.tokenPool.add("PUTW");
                         return symbol(sym.PUTW); 
                     }
     "puts"          { 
-                        tokenPool.add("PUTS");
+                        global.tokenPool.add("PUTS");
                         return symbol(sym.PUTS); 
                     }
     "int"           {
-                        tokenPool.add("INTT");
+                        global.tokenPool.add("INTT");
                         return symbol(sym.INTT);
                     }
     {String}        { 
                         String temp = yytext();
-                        tokenPool.add("STRING, " + temp);
+                        global.tokenPool.add("STRING, " + temp);
                         return symbol(sym.STRING, temp); 
                     } 
     {Number}        { 
                         String temp = yytext();
-                        tokenPool.add("NUMBER, " + temp);
+                        global.tokenPool.add("NUMBER, " + temp);
                         return symbol(sym.INT, new Integer(Integer.parseInt(temp))); }
     {Identifier}    { 
                         String temp = yytext();
-                        tokenPool.add("INDENT, " + temp);
+                        global.tokenPool.add("IDENT, " + temp);
                         return symbol(sym.IDENT, temp); 
                     }   
     "+"             { 
-                        tokenPool.add("PLUS");
+                        global.tokenPool.add("PLUS");
                         return symbol(sym.PLUS); 
                     }
     "-"             { 
-                        tokenPool.add("MINUS");
+                        global.tokenPool.add("MINUS");
                         return symbol(sym.MINUS); 
                     }
     "*"             { 
-                        tokenPool.add("MUL");
+                        global.tokenPool.add("MUL");
                         return symbol(sym.MUL); 
                     }
     "/"             { 
-                        tokenPool.add("DIV");
+                        global.tokenPool.add("DIV");
                         return symbol(sym.DIV); 
                     }
     "("             { 
-                        tokenPool.add("LPAREN");
+                        global.tokenPool.add("LPAREN");
                         return symbol(sym.LPAREN); 
                     }
     ")"             { 
-                        tokenPool.add("RPAREN");
+                        global.tokenPool.add("RPAREN");
                         return symbol(sym.RPAREN); 
                     }
     "="             { 
-                        tokenPool.add("ASSIGN");
+                        global.tokenPool.add("ASSIGN");
                         return symbol(sym.ASSIGN); 
                     }
     "<"             { 
-                        tokenPool.add("MINOR");
+                        global.tokenPool.add("MINOR");
                         return symbol(sym.MINOR); 
                     }
     ">"             { 
-                        tokenPool.add("MAYOR");
+                        global.tokenPool.add("MAYOR");
                         return symbol(sym.MAYOR); 
                     }
     "=="            { 
-                        tokenPool.add("EQUAL");
+                        global.tokenPool.add("EQUAL");
                         return symbol(sym.EQUAL); 
                     }
     "!="            { 
-                        tokenPool.add("NOTEQUAL");
+                        global.tokenPool.add("NOTEQUAL");
                         return symbol(sym.NOTEQUAL); 
                     }
     "||"            { 
-                        tokenPool.add("OR");
+                        global.tokenPool.add("OR");
                         return symbol(sym.OR); 
                     }
     "&&"            { 
-                        tokenPool.add("AND");
+                        global.tokenPool.add("AND");
                         return symbol(sym.AND); 
                     }
     ";"             { 
-                        tokenPool.add("SEMICOLON");
+                        global.tokenPool.add("SEMICOLON");
                         return symbol(sym.SEMICOLON); 
                     }
     "{"             { 
-                        tokenPool.add("LBRACKET");
+                        global.tokenPool.add("LBRACKET");
                         return symbol(sym.LBRACKET); 
                     }
     "}"             { 
-                        tokenPool.add("RBRACKET");
+                        global.tokenPool.add("RBRACKET");
                         return symbol(sym.RBRACKET); 
                     }
     "\""            { 
-                        tokenPool.add("QUOTE");
+                        global.tokenPool.add("QUOTE");
                         return symbol(sym.QUOTE); 
                     }
 

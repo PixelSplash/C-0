@@ -9,34 +9,35 @@ package c0;
 public interface sym {
   /* terminals */
   public static final int AND = 8;
-  public static final int IDENT = 28;
-  public static final int SEMICOLON = 22;
+  public static final int IDENT = 29;
+  public static final int SEMICOLON = 23;
   public static final int ELSE = 16;
   public static final int PLUS = 2;
-  public static final int INT = 27;
-  public static final int RPAREN = 18;
+  public static final int INT = 28;
+  public static final int RPAREN = 19;
   public static final int OR = 7;
   public static final int EQUAL = 9;
   public static final int NOTEQUAL = 10;
   public static final int WHILE = 15;
   public static final int IF = 14;
-  public static final int LBRACKET = 19;
-  public static final int LPAREN = 17;
-  public static final int RBRACKET = 20;
-  public static final int QUOTE = 21;
-  public static final int STRING = 29;
+  public static final int LBRACKET = 20;
+  public static final int LPAREN = 18;
+  public static final int RBRACKET = 21;
+  public static final int QUOTE = 22;
+  public static final int STRING = 30;
   public static final int MAYOR = 12;
   public static final int EOF = 0;
-  public static final int MAIN = 23;
-  public static final int BREAK = 26;
+  public static final int MAIN = 24;
+  public static final int BREAK = 27;
   public static final int DIV = 5;
-  public static final int PUTW = 24;
+  public static final int PUTW = 25;
   public static final int MINOR = 11;
   public static final int MINUS = 3;
   public static final int error = 1;
-  public static final int PUTS = 25;
+  public static final int PUTS = 26;
   public static final int ASSIGN = 6;
   public static final int BOOL = 13;
+  public static final int INTT = 17;
   public static final int MUL = 4;
   public static final String[] terminalNames = new String[] {
   "EOF",
@@ -56,6 +57,7 @@ public interface sym {
   "IF",
   "WHILE",
   "ELSE",
+  "INTT",
   "LPAREN",
   "RPAREN",
   "LBRACKET",

@@ -3,7 +3,7 @@ package c0;
 import java_cup.runtime.*;
 import tree.*;
 
-terminal            PLUS, MINUS, MUL, DIV, ASSIGN, OR, AND, EQUAL, NOTEQUAL, MINOR, MAYOR, BOOL, IF, WHILE, ELSE;
+terminal            PLUS, MINUS, MUL, DIV, ASSIGN, OR, AND, EQUAL, NOTEQUAL, MINOR, MAYOR, BOOL, IF, WHILE, ELSE, INTT;
 terminal            LPAREN, RPAREN, LBRACKET, RBRACKET, QUOTE, SEMICOLON, MAIN, PUTW, PUTS, BREAK;
 terminal Integer    INT;
 terminal String     IDENT, STRING;
@@ -16,7 +16,7 @@ precedence left EQUAL, NOTEQUAL;
 precedence left MINOR, MAYOR;
 precedence left PLUS, MINUS;
 precedence left MUL, DIV;
-precedence left LPAREN, RPAREN, LBRACKET, RBRACKET, QUOTE, SEMICOLON, MAIN, PUTW, PUTS, BREAK;
+precedence left LPAREN, RPAREN, LBRACKET, RBRACKET, QUOTE, SEMICOLON, MAIN, PUTW, PUTS, BREAK, INTT;
 precedence left ASSIGN;
 
 expr_list ::= expr_list:e expr:e1        {: RESULT = new MultiExp(e,e1, 1); :}
@@ -56,8 +56,8 @@ expr          ::= expr:e1 PLUS expr:e2
                     {: RESULT = new Putw(e1); :}
                 | BREAK SEMICOLON
                     {: RESULT = new Break(); :}
-                | INTT IDENT:s ASSIGN INT:e SEMICOLON
-                    {: RESULT = new Assignment(s, e); :}
+                | INTT IDENT:s ASSIGN expr:e SEMICOLON
+                    {: RESULT = new Assignment(s, e, 0); :}
                 | INTT IDENT:s
                     {: RESULT = new Identifier(s); :}
                 | INT:n

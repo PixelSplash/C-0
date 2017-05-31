@@ -14,7 +14,7 @@ public class If extends Tree{
     Tree right;
     Tree condition;
     int flag;
-    
+    Integer direction;
     public If(Tree cond, Tree l, Tree r, int fl){
         condition = cond;
         left = l;
@@ -43,5 +43,14 @@ public class If extends Tree{
         right.print();
         System.out.print(")");
     }
-    
+
+    @Override
+    public Integer getDirection() {
+        return direction;
+    }
+
+    @Override
+    public void setDirection(Integer dir) {
+        direction = dir;
+    }
 }

@@ -11,7 +11,7 @@ package tree;
  */
 public class Main extends Tree{
     Tree expression;
-    
+    Integer direction;
     public Main(Tree exp){
         expression = exp;
     }
@@ -31,6 +31,16 @@ public class Main extends Tree{
         System.out.print("(MAIN ");
         expression.print();
         System.out.print(")");
+    }
+
+    @Override
+    public Integer getDirection() {
+        return direction;
+    }
+
+    @Override
+    public void setDirection(Integer dir) {
+        direction = dir;
     }
     
 }

@@ -3,6 +3,10 @@ package c0;
 import java_cup.runtime.*;
 import tree.*;
 
+action code {:
+    int directionCount = 0;
+:}
+
 terminal            PLUS, MINUS, MUL, DIV, ASSIGN, OR, AND, EQUAL, NOTEQUAL, MINOR, MAYOR, BOOL, IF, WHILE, ELSE, INTT;
 terminal            LPAREN, RPAREN, LBRACKET, RBRACKET, QUOTE, SEMICOLON, MAIN, PUTW, PUTS, BREAK;
 terminal Integer    INT;
@@ -23,45 +27,45 @@ expr_list ::= expr_list:e expr:e1        {: RESULT = new MultiExp(e,e1, 1); :}
             | expr:e                     {: RESULT = new MultiExp(e,e, 0); :}
 ;
 expr          ::= expr:e1 PLUS expr:e2 
-                    {: RESULT = new Plus(e1, e2); :}
+                    {: RESULT = new Plus(e1, e2); RESULT.setDirection(directionCount); directionCount++; :}
                 | expr:e1 MINUS expr:e2
-                    {: RESULT = new Minus(e1, e2); :}
+                    {: RESULT = new Minus(e1, e2);  RESULT.setDirection(directionCount); directionCount++; :}
                 | expr:e1 MUL expr:e2
-                    {: RESULT = new Multiply(e1, e2); :}
+                    {: RESULT = new Multiply(e1, e2);  RESULT.setDirection(directionCount); directionCount++; :}
                 | expr:e1 DIV expr:e2
-                    {: RESULT = new Divide(e1, e2); :}
+                    {: RESULT = new Divide(e1, e2);  RESULT.setDirection(directionCount); directionCount++; :}
                 | LPAREN expr:e RPAREN
-                    {: RESULT = e; :}
+                    {: RESULT = e;  RESULT.setDirection(directionCount); directionCount++; :}
                 | expr:e1 MINOR expr:e2
-                    {: RESULT = new Minor(e1, e2); :}
+                    {: RESULT = new Minor(e1, e2);  RESULT.setDirection(directionCount); directionCount++; :}
                 | expr:e1 MAYOR expr:e2
-                    {: RESULT = new Mayor(e1, e2); :}
+                    {: RESULT = new Mayor(e1, e2);  RESULT.setDirection(directionCount); directionCount++; :}
                 | expr:e1 AND expr:e2
-                    {: RESULT = new And(e1, e2); :}
+                    {: RESULT = new And(e1, e2);  RESULT.setDirection(directionCount); directionCount++; :}
                 | expr:e1 OR expr:e2
-                    {: RESULT = new Or(e1, e2); :}
+                    {: RESULT = new Or(e1, e2);  RESULT.setDirection(directionCount); directionCount++; :}
                 | expr:e1 EQUAL expr:e2
-                    {: RESULT = new Equal(e1, e2); :}
+                    {: RESULT = new Equal(e1, e2);  RESULT.setDirection(directionCount); directionCount++; :}
                 | expr:e1 NOTEQUAL expr:e2
-                    {: RESULT = new Notequal(e1, e2); :}
+                    {: RESULT = new Notequal(e1, e2);  RESULT.setDirection(directionCount); directionCount++; :}
                 | IF LPAREN expr:e RPAREN LBRACKET expr_list:e1 RBRACKET ELSE LBRACKET expr_list:e2 RBRACKET
-                    {: RESULT = new If(e, e1, e2, 1); :}
+                    {: RESULT = new If(e, e1, e2, 1);  RESULT.setDirection(directionCount); directionCount++; :}
                 | IF LPAREN expr:e RPAREN LBRACKET expr_list:e1 RBRACKET
-                    {: RESULT = new If(e, e1, e1, 0); :}
+                    {: RESULT = new If(e, e1, e1, 0);  RESULT.setDirection(directionCount); directionCount++; :}
                 | WHILE LPAREN expr:e RPAREN LBRACKET expr_list:e1 RBRACKET
-                    {: RESULT = new While(e,e1); :}
+                    {: RESULT = new While(e,e1);  RESULT.setDirection(directionCount); directionCount++; :}
                 | MAIN LPAREN RPAREN LBRACKET expr_list:e1 RBRACKET
-                    {: RESULT = new Main(e1); :}
+                    {: RESULT = new Main(e1);  RESULT.setDirection(directionCount); directionCount++; :}
                 | PUTW LPAREN expr:e1 RPAREN SEMICOLON
-                    {: RESULT = new Putw(e1); :}
+                    {: RESULT = new Putw(e1);  RESULT.setDirection(directionCount); directionCount++; :}
                 | BREAK SEMICOLON
-                    {: RESULT = new Break(); :}
+                    {: RESULT = new Break();  RESULT.setDirection(directionCount); directionCount++; :}
                 | INTT IDENT:s ASSIGN expr:e SEMICOLON
-                    {: RESULT = new Assignment(s, e, 0); :}
+                    {: RESULT = new Assignment(s, e, 0);  RESULT.setDirection(directionCount); directionCount++; :}
                 | IDENT:s
-                    {: RESULT = new Identifier(s); :}
+                    {: RESULT = new Identifier(s);  RESULT.setDirection(directionCount); directionCount++; :}
                 | INT:n
-                    {: RESULT = new Literal(n); :}
+                    {: RESULT = new Literal(n);  RESULT.setDirection(directionCount); directionCount++; :}
                 | PUTS LPAREN STRING:s RPAREN SEMICOLON
-                    {: RESULT = new Puts(s); :}
+                    {: RESULT = new Puts(s);  RESULT.setDirection(directionCount); directionCount++; :}
                 ;

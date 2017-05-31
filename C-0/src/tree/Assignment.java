@@ -5,7 +5,7 @@ public class Assignment extends Tree {
     private String lhs;
     private Tree rhs;
     private int type;
-
+    Integer direction;
     public Assignment(String s, Tree e, int t) {
         lhs = s;
         rhs = e;
@@ -22,5 +22,14 @@ public class Assignment extends Tree {
         System.out.print("(ASSIGNMENT " + lhs + ", ");
         rhs.print();
         System.out.print(")");
+    }
+    @Override
+    public Integer getDirection() {
+        return direction;
+    }
+
+    @Override
+    public void setDirection(Integer dir) {
+        direction = dir;
     }
 }

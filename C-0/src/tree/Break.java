@@ -1,7 +1,7 @@
 package tree;
 
 public class Break extends Tree {
-
+    Integer direction;
     public Break() {
     }
 
@@ -12,5 +12,15 @@ public class Break extends Tree {
 
     public void print() {
         System.out.print("(BREAK)");
+    }
+
+    @Override
+    public Integer getDirection() {
+        return direction;
+    }
+
+    @Override
+    public void setDirection(Integer dir) {
+        direction = dir;
     }
 }

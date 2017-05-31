@@ -13,7 +13,7 @@ import c0.Global;
 public class Putw extends Tree{
     Tree expression;
     Global global = new Global();
-    
+    Integer direction;
     public Putw(Tree exp){
         expression = exp;
     }
@@ -30,5 +30,16 @@ public class Putw extends Tree{
         expression.print();
         System.out.print(")");
     }
+
+    @Override
+    public Integer getDirection() {
+        return direction;
+    }
+
+    @Override
+    public void setDirection(Integer dir) {
+        direction = dir;
+    }
+    
     
 }

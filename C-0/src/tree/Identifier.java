@@ -3,7 +3,7 @@ package tree;
 public class Identifier extends Tree {
 
     private String id;
-
+    Integer direction;
     public Identifier(String s) {
         id = s;
     }
@@ -14,5 +14,14 @@ public class Identifier extends Tree {
 
     public void print() {
         System.out.print("(IDENT " + id + ")");
+    }
+    @Override
+    public Integer getDirection() {
+        return direction;
+    }
+
+    @Override
+    public void setDirection(Integer dir) {
+        direction = dir;
     }
 }

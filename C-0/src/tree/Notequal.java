@@ -14,7 +14,7 @@ import java.util.Objects;
 public class Notequal extends Tree{
     Tree left;
     Tree right;
-    
+    Integer direction;    
     public Notequal(Tree l, Tree r){
         left = l;
         right = r;
@@ -36,5 +36,14 @@ public class Notequal extends Tree{
         right.print();
         System.out.print(")");
     }
-    
+
+    @Override
+    public Integer getDirection() {
+        return direction;
+    }
+
+    @Override
+    public void setDirection(Integer dir) {
+        direction = dir;
+    }
 }

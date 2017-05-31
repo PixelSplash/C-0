@@ -12,7 +12,7 @@ package tree;
 public class Minor extends Tree{
     Tree left;
     Tree right;
-    
+    Integer direction;
     public Minor(Tree l, Tree r){
         left = l;
         right = r;
@@ -34,5 +34,13 @@ public class Minor extends Tree{
         right.print();
         System.out.print(")");
     }
-    
+    @Override
+    public Integer getDirection() {
+        return direction;
+    }
+
+    @Override
+    public void setDirection(Integer dir) {
+        direction = dir;
+    }
 }

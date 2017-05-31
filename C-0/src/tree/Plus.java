@@ -3,7 +3,7 @@ package tree;
 public class Plus extends Tree {
     Tree left;
     Tree right;
-
+    Integer direction;
     public Plus(Tree l, Tree r) {
         left = l;
         right = r;
@@ -19,5 +19,16 @@ public class Plus extends Tree {
         right.print();
         System.out.print(")");
     }
+
+    @Override
+    public Integer getDirection() {
+        return direction;
+    }
+
+    @Override
+    public void setDirection(Integer dir) {
+        direction = dir;
+    }
+    
 }
 

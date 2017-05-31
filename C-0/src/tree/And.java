@@ -12,7 +12,7 @@ package tree;
 public class And extends Tree{
     Tree left;
     Tree right;
-    
+    Integer direction;
     public And(Tree l, Tree r){
         left = l;
         right = r;
@@ -33,6 +33,16 @@ public class And extends Tree{
         System.out.print(", ");
         right.print();
         System.out.print(")");
+    }
+
+    @Override
+    public Integer getDirection() {
+        return direction;
+    }
+
+    @Override
+    public void setDirection(Integer dir) {
+        direction = dir;
     }
     
 }

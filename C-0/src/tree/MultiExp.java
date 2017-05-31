@@ -4,7 +4,7 @@ public class MultiExp extends Tree {
     Tree left;
     Tree right;
     Integer type;
-
+    Integer direction;
     public MultiExp(Tree l, Tree r, Integer t) {
         left = l;
         right = r;
@@ -18,6 +18,16 @@ public class MultiExp extends Tree {
     }
     public void print() {
         System.out.print("MultiExp");
+    }
+
+    @Override
+    public Integer getDirection() {
+        return direction;
+    }
+
+    @Override
+    public void setDirection(Integer dir) {
+        direction = dir;
     }
 }
 

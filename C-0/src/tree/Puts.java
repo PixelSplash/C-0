@@ -13,6 +13,7 @@ import c0.Global;
  */
 public class Puts extends Tree{
     private String expression;
+    Integer direction;
     Global global = new Global();
     public Puts(String exp){
         expression = exp;
@@ -26,5 +27,16 @@ public class Puts extends Tree{
     public void print() {
         System.out.print("(PUTS "+ expression);
     }
+
+    @Override
+    public Integer getDirection() {
+        return direction;
+    }
+
+    @Override
+    public void setDirection(Integer dir) {
+        direction = dir;
+    }
+    
     
 }

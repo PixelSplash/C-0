@@ -58,7 +58,7 @@ expr          ::= expr:e1 PLUS expr:e2
                     {: RESULT = new Break(); :}
                 | INTT IDENT:s ASSIGN expr:e SEMICOLON
                     {: RESULT = new Assignment(s, e, 0); :}
-                | INTT IDENT:s
+                | IDENT:s
                     {: RESULT = new Identifier(s); :}
                 | INT:n
                     {: RESULT = new Literal(n); :}

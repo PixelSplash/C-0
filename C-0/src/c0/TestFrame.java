@@ -272,6 +272,9 @@ public class TestFrame extends javax.swing.JFrame {
     private void RunActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RunActionPerformed
         // TODO add your handling code here:
         try {
+                Global.openFile();
+                
+                
                 Global.outputs.clear();
                 Global.tokenPool.clear();
                 // El siguiente comando es para generar los .java del parser:
@@ -311,7 +314,7 @@ public class TestFrame extends javax.swing.JFrame {
                     line += x + "\n";
                 }
                 jTextArea4.setText(line);
-                
+                Global.closeFile();
         } catch (Exception e) {
             jTextArea3.setText("La operación no es válida.");
             System.out.println("Error de parseo.");

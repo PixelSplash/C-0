@@ -7,6 +7,8 @@ package c0;
 
 import java_cup.runtime.*;
 import tree.*;
+import java.io.BufferedWriter;
+import java.io.FileWriter;
 import java_cup.runtime.XMLElement;
 
 /** CUP v0.11b 20160615 (GIT 4ac7450) generated parser.
@@ -281,6 +283,7 @@ class CUP$parser$actions {
 
 
     int directionCount = 0;
+    Global global = new Global();
 
   private final parser parser;
 
@@ -354,7 +357,12 @@ class CUP$parser$actions {
 		int e2left = ((java_cup.runtime.Symbol)CUP$parser$stack.peek()).left;
 		int e2right = ((java_cup.runtime.Symbol)CUP$parser$stack.peek()).right;
 		Tree e2 = (Tree)((java_cup.runtime.Symbol) CUP$parser$stack.peek()).value;
-		 RESULT = new Plus(e1, e2); RESULT.setDirection(directionCount); directionCount++; 
+		 RESULT = new Plus(e1, e2); 
+                       RESULT.setDirection(directionCount); 
+                       
+                       global.writeLine("SUMAR " + e1.getDirection() + e2.getDirection() + RESULT.getDirection()+"\n");
+                       
+                       directionCount++; 
               CUP$parser$result = parser.getSymbolFactory().newSymbol("expr",1, ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-2)), ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), RESULT);
             }
           return CUP$parser$result;
@@ -597,7 +605,12 @@ class CUP$parser$actions {
 		int eleft = ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-1)).left;
 		int eright = ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-1)).right;
 		Tree e = (Tree)((java_cup.runtime.Symbol) CUP$parser$stack.elementAt(CUP$parser$top-1)).value;
-		 RESULT = new Assignment(s, e, 0);  RESULT.setDirection(directionCount); directionCount++; 
+		 RESULT = new Assignment(s, e, 0); 
+                       RESULT.setDirection(directionCount); 
+                       
+                       global.writeLine("CARGAR_DIRECCION " + e.getDirection() + " null " + RESULT.getDirection()+"\n");
+                       
+                       directionCount++; 
               CUP$parser$result = parser.getSymbolFactory().newSymbol("expr",1, ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-4)), ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), RESULT);
             }
           return CUP$parser$result;
@@ -621,7 +634,12 @@ class CUP$parser$actions {
 		int nleft = ((java_cup.runtime.Symbol)CUP$parser$stack.peek()).left;
 		int nright = ((java_cup.runtime.Symbol)CUP$parser$stack.peek()).right;
 		Integer n = (Integer)((java_cup.runtime.Symbol) CUP$parser$stack.peek()).value;
-		 RESULT = new Literal(n);  RESULT.setDirection(directionCount); directionCount++; 
+		 RESULT = new Literal(n);
+                       RESULT.setDirection(directionCount); 
+                     
+                       global.writeLine("CARGAR_VALOR " + n + " null " + RESULT.getDirection()+"\n");
+                      
+                       directionCount++; 
               CUP$parser$result = parser.getSymbolFactory().newSymbol("expr",1, ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), RESULT);
             }
           return CUP$parser$result;

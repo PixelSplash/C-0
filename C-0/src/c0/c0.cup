@@ -6,7 +6,7 @@ import java.io.BufferedWriter;
 import java.io.FileWriter;
 
 action code {:
-    int directionCount = 0;
+    int directionCount = 9999;
     Global global = new Global();
 :}
 
@@ -33,7 +33,7 @@ expr          ::= expr:e1 PLUS expr:e2
                     {: RESULT = new Plus(e1, e2); 
                        RESULT.setDirection(directionCount); 
                        
-                       global.writeLine("SUMAR " + e1.getDirection() + e2.getDirection() + RESULT.getDirection()+"\n");
+                       global.writeLine("SUMAR " + e1.getDirection() + " " + e2.getDirection() + " " + RESULT.getDirection()+"\n");
                        
                        directionCount++; :}
                 | expr:e1 MINUS expr:e2

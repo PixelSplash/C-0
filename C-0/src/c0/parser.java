@@ -282,7 +282,7 @@ public class parser extends java_cup.runtime.lr_parser {
 class CUP$parser$actions {
 
 
-    int directionCount = 0;
+    int directionCount = 9999;
     Global global = new Global();
 
   private final parser parser;
@@ -359,9 +359,6 @@ class CUP$parser$actions {
 		Tree e2 = (Tree)((java_cup.runtime.Symbol) CUP$parser$stack.peek()).value;
 		 RESULT = new Plus(e1, e2); 
                        RESULT.setDirection(directionCount); 
-                       
-                       global.writeLine("SUMAR " + e1.getDirection() + e2.getDirection() + RESULT.getDirection()+"\n");
-                       
                        directionCount++; 
               CUP$parser$result = parser.getSymbolFactory().newSymbol("expr",1, ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-2)), ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), RESULT);
             }
@@ -607,9 +604,6 @@ class CUP$parser$actions {
 		Tree e = (Tree)((java_cup.runtime.Symbol) CUP$parser$stack.elementAt(CUP$parser$top-1)).value;
 		 RESULT = new Assignment(s, e, 0); 
                        RESULT.setDirection(directionCount); 
-                       
-                       global.writeLine("CARGAR_DIRECCION " + e.getDirection() + " null " + RESULT.getDirection()+"\n");
-                       
                        directionCount++; 
               CUP$parser$result = parser.getSymbolFactory().newSymbol("expr",1, ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-4)), ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), RESULT);
             }
@@ -636,9 +630,6 @@ class CUP$parser$actions {
 		Integer n = (Integer)((java_cup.runtime.Symbol) CUP$parser$stack.peek()).value;
 		 RESULT = new Literal(n);
                        RESULT.setDirection(directionCount); 
-                     
-                       global.writeLine("CARGAR_VALOR " + n + " null " + RESULT.getDirection()+"\n");
-                      
                        directionCount++; 
               CUP$parser$result = parser.getSymbolFactory().newSymbol("expr",1, ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), RESULT);
             }

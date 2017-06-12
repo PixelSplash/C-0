@@ -36,15 +36,15 @@ public class Global {
     }
     public static void writeICStrings() throws IOException{
         String res = "";
-        int i = 0;
+        int i = 1;
         for(String x: ICStrings){
-            i++;
             res += ("PONER_CADENA CADENA_" + i + " null " + x + "\n");
+            i++;
         }
         writeLine(res);
     }
     public static int addICString(String str){
         ICStrings.add(str);
-        return (ICStrings.size()-1);
+        return (ICStrings.size());
     }
 }

@@ -24,7 +24,7 @@ public class While extends Tree{
             right.eval(e);
             e.deleteLastScopeTable();
             if(e.lookup("break")==1){
-                e.set("break", 0, 0);
+                e.set("break", 0, 0, 0);
                 break;
             }
         }

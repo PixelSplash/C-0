@@ -1,5 +1,10 @@
 package tree;
 
+import c0.Global;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 public class Divide extends Tree {
     Tree left;
     Tree right;
@@ -10,7 +15,13 @@ public class Divide extends Tree {
     }
 
     public Integer eval(Environment e) {
-        return left.eval(e) / right.eval(e);
+        int result = left.eval(e) / right.eval(e);
+        try {
+            Global.writeLine("DIVIDIR " + left.getDirection() + " " + right.getDirection() + " " + this.getDirection()+"\n");
+        } catch (IOException ex) {
+            Logger.getLogger(Divide.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return result;
     }
 
     public void print() {

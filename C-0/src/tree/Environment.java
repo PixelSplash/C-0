@@ -10,7 +10,7 @@ public class Environment {
         _typeTable = new ArrayList<TypeEnv>();
         _typeTable.add(new TypeEnv(0,"int"));
         _symbolTable.add(new ArrayList<SymbolEnv>());
-        _symbolTable.get(0).add(new SymbolEnv(0,"brake", 0));
+        _symbolTable.get(0).add(new SymbolEnv(0,"brake", 0, 0));
     }
 
     public Integer lookup(String var) {
@@ -22,10 +22,18 @@ public class Environment {
         }
         return null;
     }
-    
+    public Integer lookupDir(String var) {
+        for(int i = _symbolTable.size()-1; i >= 0; i--){
+            ArrayList<SymbolEnv> x = _symbolTable.get(i);
+            for(SymbolEnv y : x){
+                if(y.getId().equals(var))return y.getDirection();
+            }
+        }
+        return null;
+    }
 
-    public void set(String var, Integer val, int type) {
-        _symbolTable.get(_symbolTable.size()-1).add(new SymbolEnv( val, var, type));
+    public void set(String var, Integer val, int type, int dir) {
+        _symbolTable.get(_symbolTable.size()-1).add(new SymbolEnv( val, var, type, dir));
     }
 
     public void deleteLastScopeTable(){

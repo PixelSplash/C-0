@@ -9,6 +9,7 @@ public class Identifier extends Tree {
     }
 
     public Integer eval(Environment e) {
+        this.direction = e.lookupDir(id);
         return e.lookup(id);
     }
 

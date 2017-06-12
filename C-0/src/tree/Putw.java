@@ -6,6 +6,9 @@
 package tree;
 
 import c0.Global;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 /**
  *
  * @author sescalo
@@ -21,6 +24,11 @@ public class Putw extends Tree{
     public Integer eval(Environment e) {
         
         Integer ret = expression.eval(e);
+        try {
+            Global.writeLine("IMPRIMIR_ENTERO " + expression.getDirection() + " null null\n");
+        } catch (IOException ex) {
+            Logger.getLogger(Putw.class.getName()).log(Level.SEVERE, null, ex);
+        }
         global.outputs.add(ret.toString());
         return ret;
     }

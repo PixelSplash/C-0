@@ -1,5 +1,10 @@
 package tree;
 
+import c0.Global;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 public class Minus extends Tree {
     Tree left;
     Tree right;
@@ -10,7 +15,13 @@ public class Minus extends Tree {
     }
 
     public Integer eval(Environment e) {
-        return left.eval(e) - right.eval(e);
+        int result = left.eval(e) - right.eval(e);
+        try {
+            Global.writeLine("RESTAR " + left.getDirection() + " " + right.getDirection() + " " + this.getDirection()+"\n");
+        } catch (IOException ex) {
+            Logger.getLogger(Minus.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return result;
     }
     public void print() {
         System.out.print("(MINUS ");

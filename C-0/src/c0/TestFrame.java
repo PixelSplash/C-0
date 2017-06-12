@@ -314,6 +314,8 @@ public class TestFrame extends javax.swing.JFrame {
                     line += x + "\n";
                 }
                 jTextArea4.setText(line);
+                Global.writeLine("FIN null null null\n");
+                Global.writeICStrings();
                 Global.closeFile();
         } catch (Exception e) {
             jTextArea3.setText("La operación no es válida.");

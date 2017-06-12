@@ -5,6 +5,11 @@
  */
 package tree;
 
+import c0.Global;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 /**
  *
  * @author sescalo
@@ -19,12 +24,20 @@ public class Minor extends Tree{
     }
     
     public Integer eval(Environment e) {
-        if(left.eval(e) < right.eval(e)){
-            return 1;
+        boolean expr = left.eval(e) < right.eval(e);
+        int result;
+        if(expr){
+            result = 1;
         }
         else {
-            return 0;
+            result = 0;
         }
+        try {
+            Global.writeLine("MENOR " + left.getDirection() + " " + right.getDirection() + " " + this.getDirection()+"\n");
+        } catch (IOException ex) {
+            Logger.getLogger(Minor.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return result;
     }
     
     public void print() {

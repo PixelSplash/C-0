@@ -32,9 +32,6 @@ expr_list ::= expr_list:e expr:e1        {: RESULT = new MultiExp(e,e1, 1); :}
 expr          ::= expr:e1 PLUS expr:e2 
                     {: RESULT = new Plus(e1, e2); 
                        RESULT.setDirection(directionCount); 
-                       
-                       global.writeLine("SUMAR " + e1.getDirection() + " " + e2.getDirection() + " " + RESULT.getDirection()+"\n");
-                       
                        directionCount++; :}
                 | expr:e1 MINUS expr:e2
                     {: RESULT = new Minus(e1, e2);  RESULT.setDirection(directionCount); directionCount++; :}
@@ -71,18 +68,12 @@ expr          ::= expr:e1 PLUS expr:e2
                 | INTT IDENT:s ASSIGN expr:e SEMICOLON
                     {: RESULT = new Assignment(s, e, 0); 
                        RESULT.setDirection(directionCount); 
-                       
-                       global.writeLine("CARGAR_DIRECCION " + e.getDirection() + " null " + RESULT.getDirection()+"\n");
-                       
                        directionCount++; :}
                 | IDENT:s
                     {: RESULT = new Identifier(s);  RESULT.setDirection(directionCount); directionCount++; :}
                 | INT:n
                     {: RESULT = new Literal(n);
                        RESULT.setDirection(directionCount); 
-                     
-                       global.writeLine("CARGAR_VALOR " + n + " null " + RESULT.getDirection()+"\n");
-                      
                        directionCount++; :}
                 | PUTS LPAREN STRING:s RPAREN SEMICOLON
                     {: RESULT = new Puts(s);  RESULT.setDirection(directionCount); directionCount++; :}

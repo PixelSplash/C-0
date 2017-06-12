@@ -4,7 +4,7 @@ public class SymbolEnv {
     
     private int cod;
     private String id;
-    private int direccion;
+    private int direction;
     private int type;
 
     public int getType() {
@@ -15,10 +15,11 @@ public class SymbolEnv {
         this.type = type;
     }
 
-    public SymbolEnv( int pcod, String pid, int type) {
+    public SymbolEnv( int pcod, String pid, int type, int dir) {
         this.cod = pcod;
         this.id = pid;
         this.type = type;
+        this.direction = dir;
     }
 
     public int getCod() {
@@ -37,12 +38,12 @@ public class SymbolEnv {
         this.id = id;
     }
 
-    public int getDireccion() {
-        return direccion;
+    public int getDirection() {
+        return direction;
     }
 
-    public void setDireccion(int direccion) {
-        this.direccion = direccion;
+    public void setDirection(int direction) {
+        this.direction = direction;
     }
     
     

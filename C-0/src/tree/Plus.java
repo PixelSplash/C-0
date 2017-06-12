@@ -1,6 +1,11 @@
 package tree;
 
-public class Plus extends Tree {
+import c0.Global;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
+public class Plus extends Tree {    
     Tree left;
     Tree right;
     Integer direction;
@@ -10,7 +15,13 @@ public class Plus extends Tree {
     }
 
     public Integer eval(Environment e) {
-        return left.eval(e) + right.eval(e);
+        int result = left.eval(e) + right.eval(e);
+        try {
+            Global.writeLine("SUMAR " + left.getDirection() + " " + right.getDirection() + " " + this.getDirection()+"\n");
+        } catch (IOException ex) {
+            Logger.getLogger(Plus.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return result;
     }
     public void print() {
         System.out.print("(PLUS ");

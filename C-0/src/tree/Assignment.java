@@ -1,5 +1,10 @@
 package tree;
 
+import c0.Global;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 public class Assignment extends Tree {
 
     private String lhs;
@@ -14,7 +19,14 @@ public class Assignment extends Tree {
 
     public Integer eval(Environment e) {
         Integer val = rhs.eval(e);
-        e.set(lhs, val,type);
+        e.set(lhs, val,type, this.direction);
+        
+        try {
+            Global.writeLine("CARGAR_DIRECCION " + rhs.getDirection() + " null " + this.getDirection()+"\n");
+        } catch (IOException ex) {
+            Logger.getLogger(Assignment.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
         return val;
     }
 
@@ -23,6 +35,7 @@ public class Assignment extends Tree {
         rhs.print();
         System.out.print(")");
     }
+
     @Override
     public Integer getDirection() {
         return direction;

@@ -6,7 +6,7 @@ public class Break extends Tree {
     }
 
     public Integer eval(Environment e) {
-        e.set("break", 1, 0, 9999);
+        e.set("break", 1);
         return 0;
     }
 

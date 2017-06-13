@@ -47,6 +47,7 @@ public class Assignment extends Tree {
     @Override
     public void writeIC(Environment e) {
         try {
+            this.direction = e.lookupDir(lhs);
             rhs.writeIC(e);
             Global.writeLine("CARGAR_DIRECCION " + rhs.getDirection() + " null " + this.getDirection()+"\n");
         } catch (IOException ex) {

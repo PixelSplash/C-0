@@ -10,7 +10,7 @@ public class Environment {
         _typeTable = new ArrayList<TypeEnv>();
         _typeTable.add(new TypeEnv(0,"int"));
         _symbolTable.add(new ArrayList<SymbolEnv>());
-        _symbolTable.get(0).add(new SymbolEnv(0,"brake", 0, 9999));
+        _symbolTable.get(0).add(new SymbolEnv(0,"break", 0, 9999));
     }
 
     public Integer lookup(String var) {

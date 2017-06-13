@@ -24,12 +24,12 @@ public class While extends Tree{
     }
     
     public Integer eval(Environment e) {
-        while(left.eval(e) == 1){
+        while(left.eval(e) > 0){
             e.newScopeTable();
             right.eval(e);
             e.deleteLastScopeTable();
             if(e.lookup("break")==1){
-                e.set("break", 0, 0, 0);
+                e.set("break", 0);
                 break;
             }
         }

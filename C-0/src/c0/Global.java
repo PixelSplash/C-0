@@ -21,7 +21,8 @@ import java.util.ArrayList;
  */
 public class Global {
     public static int directionCount = 10000;
-    private static final String FILENAME = "IntermediateCode.txt";
+    public static final String FILENAME = "IntermediateCode.txt";
+    public static final String FILENAMEFINAL = "FinalCode.txt";
     private static int whileCounter = 1;
     private static int ifCounter = 1;
     public static ArrayList<String> tokenPool = new ArrayList<String>();
@@ -29,8 +30,8 @@ public class Global {
     public static ArrayList<String> ICStrings = new ArrayList<String>();
     public static FileWriter file;
     public static BufferedWriter  buffer;
-    public static void openFile() throws IOException{ 
-        file = new FileWriter(FILENAME);
+    public static void openFile(String filename) throws IOException{ 
+        file = new FileWriter(filename);
         buffer = new BufferedWriter(file);}
     public static void writeLine(String str) throws IOException{ buffer.write(str);}
     public static void closeFile() throws IOException{ buffer.close();
@@ -57,5 +58,14 @@ public class Global {
 
     public static int getIfCounter() {
         return ifCounter++;
+    }
+    
+    public static void clear(){
+        directionCount = 10000;
+        whileCounter = 1;
+        ifCounter = 1;
+        tokenPool.clear();
+        outputs.clear();
+        ICStrings.clear();
     }
 }

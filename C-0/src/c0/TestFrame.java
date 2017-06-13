@@ -272,11 +272,10 @@ public class TestFrame extends javax.swing.JFrame {
     private void RunActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RunActionPerformed
         // TODO add your handling code here:
         try {
-                Global.openFile();
+                Global.openFile(Global.FILENAME);
                 
                 
-                Global.outputs.clear();
-                Global.tokenPool.clear();
+                Global.clear();
                 // El siguiente comando es para generar los .java del parser:
                 // java -jar java-cup-11b.jar -interface -parser parser calc.cup
                 String st = jTextArea2.getText();
@@ -317,7 +316,10 @@ public class TestFrame extends javax.swing.JFrame {
                 jTextArea4.setText(line);
                 Global.writeLine("FIN null null null\n");
                 Global.writeICStrings();
+                
                 Global.closeFile();
+                //Codigo Final
+                //Global.openFile(Global.FILENAMEFINAL);
         } catch (Exception e) {
             jTextArea3.setText("La operación no es válida.");
             System.out.println("Error de parseo.");

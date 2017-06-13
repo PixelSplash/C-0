@@ -48,6 +48,7 @@ public class Putw extends Tree{
     @Override
     public void writeIC(Environment e) {
         try {
+            expression.writeIC(e);
             Global.writeLine("IMPRIMIR_ENTERO " + expression.getDirection() + " null null\n");
         } catch (IOException ex) {
             Logger.getLogger(Putw.class.getName()).log(Level.SEVERE, null, ex);

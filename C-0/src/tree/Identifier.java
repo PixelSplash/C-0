@@ -9,7 +9,6 @@ public class Identifier extends Tree {
     }
 
     public Integer eval(Environment e) {
-        this.direction = e.lookupDir(id);
         return e.lookup(id);
     }
 
@@ -28,7 +27,7 @@ public class Identifier extends Tree {
 
     @Override
     public void writeIC(Environment e) {
-        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        this.direction = e.lookupDir(id);
     }
     
 }

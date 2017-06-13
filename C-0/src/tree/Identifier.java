@@ -9,6 +9,10 @@ public class Identifier extends Tree {
     }
 
     public Integer eval(Environment e) {
+<<<<<<< HEAD
+=======
+       
+>>>>>>> no commit
         return e.lookup(id);
     }
 
@@ -27,7 +31,11 @@ public class Identifier extends Tree {
 
     @Override
     public void writeIC(Environment e) {
+<<<<<<< HEAD
         this.direction = e.lookupDir(id);
+=======
+         this.direction = e.lookupDir(id);
+>>>>>>> no commit
     }
     
 }

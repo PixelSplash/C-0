@@ -21,6 +21,7 @@ public class Assignment extends Tree {
         Integer val = rhs.eval(e);
         if(type == -2){
             e.set(lhs, val);
+            
         }else{
             e.add(lhs, val,type, this.direction);
         }

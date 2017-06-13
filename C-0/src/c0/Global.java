@@ -59,6 +59,7 @@ public class Global {
     public static int getIfCounter() {
         return ifCounter++;
     }
+<<<<<<< HEAD
     
     public static void clear(){
         directionCount = 10000;
@@ -67,5 +68,11 @@ public class Global {
         tokenPool.clear();
         outputs.clear();
         ICStrings.clear();
+=======
+
+    public static void clear() {
+        Global.outputs.clear();
+        Global.tokenPool.clear();    
+>>>>>>> no commit
     }
 }

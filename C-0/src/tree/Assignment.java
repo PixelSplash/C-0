@@ -19,7 +19,12 @@ public class Assignment extends Tree {
 
     public Integer eval(Environment e) {
         Integer val = rhs.eval(e);
-        e.set(lhs, val,type, this.direction);
+        if(type == -2){
+            e.set(lhs, val);
+        }else{
+            e.add(lhs, val,type, this.direction);
+        }
+        
         return val;
     }
 

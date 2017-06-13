@@ -69,6 +69,10 @@ expr          ::= expr:e1 PLUS expr:e2
                     {: RESULT = new Assignment(s, e, 0); 
                        RESULT.setDirection(Global.directionCount); 
                        Global.directionCount++; :}
+                | IDENT:s ASSIGN expr:e SEMICOLON
+                    {: RESULT = new Assignment(s, e, -2); 
+                       RESULT.setDirection(Global.directionCount); 
+                       Global.directionCount++; :}
                 | IDENT:s
                     {: RESULT = new Identifier(s);  RESULT.setDirection(Global.directionCount); Global.directionCount++; :}
                 | INT:n

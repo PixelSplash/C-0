@@ -32,10 +32,33 @@ public class Environment {
         return null;
     }
 
-    public void set(String var, Integer val, int type, int dir) {
-        _symbolTable.get(_symbolTable.size()-1).add(new SymbolEnv( val, var, type, dir));
+    public void add(String var, Integer val, int type, int dir) {
+        if(lookup(var) != null){
+            System.out.println("Error sobrescribir variable");
+        }else{
+            _symbolTable.get(_symbolTable.size()-1).add(new SymbolEnv( val, var, type, dir));
+        }
     }
-
+    public void set(String var, Integer val) {
+        boolean exist = false;
+        for(int i = _symbolTable.size()-1; i >= 0; i--){
+            ArrayList<SymbolEnv> x = _symbolTable.get(i);
+            for(SymbolEnv y : x){
+                if(y.getId().equals(var)){
+                    y.setCod(val);
+                    exist = true;
+                    break;
+                }
+                
+            }
+            if(exist){
+                break;
+            }
+        }
+        if(!exist){
+            System.out.println("Error no existe variable");
+        }
+    }
     public void deleteLastScopeTable(){
         _symbolTable.remove(_symbolTable.size()-1);
     }

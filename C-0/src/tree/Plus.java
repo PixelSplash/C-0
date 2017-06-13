@@ -16,11 +16,7 @@ public class Plus extends Tree {
 
     public Integer eval(Environment e) {
         int result = left.eval(e) + right.eval(e);
-        try {
-            Global.writeLine("SUMAR " + left.getDirection() + " " + right.getDirection() + " " + this.getDirection()+"\n");
-        } catch (IOException ex) {
-            Logger.getLogger(Plus.class.getName()).log(Level.SEVERE, null, ex);
-        }
+
         return result;
     }
     public void print() {
@@ -39,6 +35,17 @@ public class Plus extends Tree {
     @Override
     public void setDirection(Integer dir) {
         direction = dir;
+    }
+    
+    @Override
+    public void writeIC(Environment e) {
+        try {
+            left.writeIC(e);
+            right.writeIC(e);
+            Global.writeLine("SUMAR " + left.getDirection() + " " + right.getDirection() + " " + this.getDirection()+"\n");
+        } catch (IOException ex) {
+            Logger.getLogger(Plus.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
     
 }

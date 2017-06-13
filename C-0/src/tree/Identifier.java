@@ -25,4 +25,10 @@ public class Identifier extends Tree {
     public void setDirection(Integer dir) {
         direction = dir;
     }
+
+    @Override
+    public void writeIC(Environment e) {
+        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+    
 }

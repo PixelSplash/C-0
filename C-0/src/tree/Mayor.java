@@ -32,11 +32,6 @@ public class Mayor extends Tree{
         else {
             result = 0;
         }
-        try {
-            Global.writeLine("MAYOR " + left.getDirection() + " " + right.getDirection() + " " + this.getDirection()+"\n");
-        } catch (IOException ex) {
-            Logger.getLogger(Mayor.class.getName()).log(Level.SEVERE, null, ex);
-        }
         return result;
     }
     
@@ -56,6 +51,17 @@ public class Mayor extends Tree{
     @Override
     public void setDirection(Integer dir) {
         direction = dir;
+    }
+    
+    @Override
+    public void writeIC(Environment e) {
+        try {
+                left.writeIC(e);
+                right.writeIC(e);
+                Global.writeLine("MAYOR " + left.getDirection() + " " + right.getDirection() + " " + this.getDirection()+"\n");
+            } catch (IOException ex) {
+                Logger.getLogger(Mayor.class.getName()).log(Level.SEVERE, null, ex);
+            }
     }
     
 }

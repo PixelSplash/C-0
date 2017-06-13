@@ -5,6 +5,8 @@
  */
 package tree;
 
+import java.io.IOException;
+
 /**
  *
  * @author sescalo
@@ -41,6 +43,11 @@ public class Main extends Tree{
     @Override
     public void setDirection(Integer dir) {
         direction = dir;
+    }
+
+    @Override
+    public void writeIC(Environment e) throws IOException {
+        expression.writeIC(e);
     }
     
 }

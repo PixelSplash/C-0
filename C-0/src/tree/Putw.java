@@ -24,11 +24,7 @@ public class Putw extends Tree{
     public Integer eval(Environment e) {
         
         Integer ret = expression.eval(e);
-        try {
-            Global.writeLine("IMPRIMIR_ENTERO " + expression.getDirection() + " null null\n");
-        } catch (IOException ex) {
-            Logger.getLogger(Putw.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        
         global.outputs.add(ret.toString());
         return ret;
     }
@@ -47,6 +43,15 @@ public class Putw extends Tree{
     @Override
     public void setDirection(Integer dir) {
         direction = dir;
+    }
+
+    @Override
+    public void writeIC(Environment e) {
+        try {
+            Global.writeLine("IMPRIMIR_ENTERO " + expression.getDirection() + " null null\n");
+        } catch (IOException ex) {
+            Logger.getLogger(Putw.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
     
     

@@ -1,5 +1,7 @@
 package tree;
 
+import java.io.IOException;
+
 public class MultiExp extends Tree {
     Tree left;
     Tree right;
@@ -28,6 +30,14 @@ public class MultiExp extends Tree {
     @Override
     public void setDirection(Integer dir) {
         direction = dir;
+    }
+
+    @Override
+    public void writeIC(Environment e) throws IOException {
+        left.writeIC(e);
+        if(type == 1){
+            right.writeIC(e);
+        }
     }
 }
 

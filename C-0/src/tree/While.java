@@ -5,6 +5,11 @@
  */
 package tree;
 
+import c0.Global;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 /**
  *
  * @author sescalo
@@ -48,6 +53,21 @@ public class While extends Tree{
     @Override
     public void setDirection(Integer dir) {
         direction = dir;
+    }
+
+    @Override
+    public void writeIC(Environment e) {
+        int whileCounter = Global.getWhileCounter();
+        try {
+            Global.writeLine("ETIQUETA null null BLUCLE_" + whileCounter + "\n");
+            left.writeIC(e);
+            Global.writeLine("SALTAR_CONDICION " + left.getDirection() + " null FINBUCLE_" + whileCounter + "\n");
+            right.writeIC(e);
+            Global.writeLine("SALTAR_ETIQUETA null null BUCLE_" + whileCounter + "\n");
+            Global.writeLine("ETIQUETA null null FINBUCLE_" + whileCounter + "\n");
+        } catch (IOException ex) {
+            Logger.getLogger(While.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
     
 }

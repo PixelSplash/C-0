@@ -6,7 +6,7 @@ public class Break extends Tree {
     }
 
     public Integer eval(Environment e) {
-        e.set("break", 1, 0, 0);
+        e.set("break", 1, 0, 9999);
         return 0;
     }
 
@@ -22,5 +22,10 @@ public class Break extends Tree {
     @Override
     public void setDirection(Integer dir) {
         direction = dir;
+    }
+
+    @Override
+    public void writeIC(Environment e) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }

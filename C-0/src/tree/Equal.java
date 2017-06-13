@@ -32,11 +32,6 @@ public class Equal extends Tree{
         else {
             result = 0;
         }
-        try {
-            Global.writeLine("IGUAL " + left.getDirection() + " " + right.getDirection() + " " + this.getDirection()+"\n");
-        } catch (IOException ex) {
-            Logger.getLogger(Equal.class.getName()).log(Level.SEVERE, null, ex);
-        }
         return result;
     }
     
@@ -56,5 +51,16 @@ public class Equal extends Tree{
     @Override
     public void setDirection(Integer dir) {
         direction = dir;
+    }
+    
+    @Override
+    public void writeIC(Environment e) {
+        try {
+            left.writeIC(e);
+            right.writeIC(e);
+            Global.writeLine("IGUAL " + left.getDirection() + " " + right.getDirection() + " " + this.getDirection()+"\n");
+        } catch (IOException ex) {
+            Logger.getLogger(Equal.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 }

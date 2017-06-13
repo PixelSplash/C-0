@@ -16,11 +16,6 @@ public class Divide extends Tree {
 
     public Integer eval(Environment e) {
         int result = left.eval(e) / right.eval(e);
-        try {
-            Global.writeLine("DIVIDIR " + left.getDirection() + " " + right.getDirection() + " " + this.getDirection()+"\n");
-        } catch (IOException ex) {
-            Logger.getLogger(Divide.class.getName()).log(Level.SEVERE, null, ex);
-        }
         return result;
     }
 
@@ -40,5 +35,16 @@ public class Divide extends Tree {
     @Override
     public void setDirection(Integer dir) {
         direction = dir;
+    }
+    
+    @Override
+    public void writeIC(Environment e) {
+        try {
+            left.writeIC(e);
+            right.writeIC(e);
+            Global.writeLine("DIVIDIR " + left.getDirection() + " " + right.getDirection() + " " + this.getDirection()+"\n");
+        } catch (IOException ex) {
+            Logger.getLogger(Divide.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 }

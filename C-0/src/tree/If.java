@@ -5,6 +5,11 @@
  */
 package tree;
 
+import c0.Global;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 /**
  *
  * @author sescalo
@@ -53,4 +58,26 @@ public class If extends Tree{
     public void setDirection(Integer dir) {
         direction = dir;
     }
+
+    @Override
+    public void writeIC(Environment e) {
+        int ifCounter = Global.getIfCounter();
+        try {
+            condition.writeIC(e);
+            if(flag == 1){
+                Global.writeLine("SALTAR_CONDICION " + condition.getDirection() + " null ELSE_" + ifCounter + "\n");
+            }else{
+                Global.writeLine("SALTAR_CONDICION " + condition.getDirection() + " null FINIF_" + ifCounter+ "\n");
+            }
+            left.writeIC(e);
+            Global.writeLine("SALTAR_ETIQUETA null null FINIF_" + ifCounter + "\n");
+            if(flag == 1){
+                Global.writeLine("ETIQUETA null null ELSE_" + ifCounter + "\n");
+                right.writeIC(e);
+            }
+           
+            Global.writeLine("ETIQUETA null null FINIF_" + ifCounter + "\n");
+        } catch (IOException ex) {
+            Logger.getLogger(While.class.getName()).log(Level.SEVERE, null, ex);
+        }    }
 }

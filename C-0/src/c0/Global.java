@@ -20,8 +20,10 @@ import java.util.ArrayList;
  * @author bryam
  */
 public class Global {
+    public static int directionCount = 10000;
     private static final String FILENAME = "IntermediateCode.txt";
-    
+    private static int whileCounter = 1;
+    private static int ifCounter = 1;
     public static ArrayList<String> tokenPool = new ArrayList<String>();
     public static ArrayList<String> outputs = new ArrayList<String>();
     public static ArrayList<String> ICStrings = new ArrayList<String>();
@@ -46,5 +48,14 @@ public class Global {
     public static int addICString(String str){
         ICStrings.add(str);
         return (ICStrings.size());
+    }
+
+    public static int getWhileCounter() {
+        
+        return whileCounter++;
+    }
+
+    public static int getIfCounter() {
+        return ifCounter++;
     }
 }

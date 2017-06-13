@@ -13,11 +13,6 @@ public class Literal extends Tree {
     }
 
     public Integer eval(Environment e) {
-        try {
-            Global.writeLine("CARGAR_VALOR " + val + " null " + this.getDirection()+"\n");
-        } catch (IOException ex) {
-            Logger.getLogger(Literal.class.getName()).log(Level.SEVERE, null, ex);
-        }
         return val;
     }
     public void print() {
@@ -32,6 +27,15 @@ public class Literal extends Tree {
     @Override
     public void setDirection(Integer dir) {
         direction = dir;
+    }
+    
+    @Override
+    public void writeIC(Environment e) {
+        try {
+            Global.writeLine("CARGAR_VALOR " + val + " null " + this.getDirection()+"\n");
+        } catch (IOException ex) {
+            Logger.getLogger(Literal.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 }
 

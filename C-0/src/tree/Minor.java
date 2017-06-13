@@ -32,11 +32,6 @@ public class Minor extends Tree{
         else {
             result = 0;
         }
-        try {
-            Global.writeLine("MENOR " + left.getDirection() + " " + right.getDirection() + " " + this.getDirection()+"\n");
-        } catch (IOException ex) {
-            Logger.getLogger(Minor.class.getName()).log(Level.SEVERE, null, ex);
-        }
         return result;
     }
     
@@ -55,5 +50,16 @@ public class Minor extends Tree{
     @Override
     public void setDirection(Integer dir) {
         direction = dir;
+    }
+    
+    @Override
+    public void writeIC(Environment e) {
+        try {
+            left.writeIC(e);
+            right.writeIC(e);
+            Global.writeLine("MENOR " + left.getDirection() + " " + right.getDirection() + " " + this.getDirection()+"\n");
+        } catch (IOException ex) {
+            Logger.getLogger(Minor.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 }

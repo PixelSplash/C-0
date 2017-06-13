@@ -20,13 +20,6 @@ public class Assignment extends Tree {
     public Integer eval(Environment e) {
         Integer val = rhs.eval(e);
         e.set(lhs, val,type, this.direction);
-        
-        try {
-            Global.writeLine("CARGAR_DIRECCION " + rhs.getDirection() + " null " + this.getDirection()+"\n");
-        } catch (IOException ex) {
-            Logger.getLogger(Assignment.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        
         return val;
     }
 
@@ -44,5 +37,15 @@ public class Assignment extends Tree {
     @Override
     public void setDirection(Integer dir) {
         direction = dir;
+    }
+
+    @Override
+    public void writeIC(Environment e) {
+        try {
+            rhs.writeIC(e);
+            Global.writeLine("CARGAR_DIRECCION " + rhs.getDirection() + " null " + this.getDirection()+"\n");
+        } catch (IOException ex) {
+            Logger.getLogger(Assignment.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 }

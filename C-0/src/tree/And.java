@@ -32,11 +32,7 @@ public class And extends Tree{
         else {
             result = 0;
         }
-        try {
-                Global.writeLine("AND " + left.getDirection() + " " + right.getDirection() + " " + this.getDirection()+"\n");
-            } catch (IOException ex) {
-                Logger.getLogger(And.class.getName()).log(Level.SEVERE, null, ex);
-            }
+        writeIC(e);
         return result;
     }
     
@@ -56,6 +52,17 @@ public class And extends Tree{
     @Override
     public void setDirection(Integer dir) {
         direction = dir;
+    }
+
+    @Override
+    public void writeIC(Environment e) {
+        try {
+                left.writeIC(e);
+                right.writeIC(e);
+                Global.writeLine("AND " + left.getDirection() + " " + right.getDirection() + " " + this.getDirection()+"\n");
+            } catch (IOException ex) {
+                Logger.getLogger(And.class.getName()).log(Level.SEVERE, null, ex);
+            }
     }
     
 }

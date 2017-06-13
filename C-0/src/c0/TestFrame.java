@@ -295,6 +295,7 @@ public class TestFrame extends javax.swing.JFrame {
                 //System.out.println("SALIDAS:");
                 
                 tree.eval(env);
+                tree.writeIC(env);
                                 
                 //OutputPool
                 line = "";

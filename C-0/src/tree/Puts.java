@@ -25,11 +25,6 @@ public class Puts extends Tree{
     public Integer eval(Environment e) {
         global.outputs.add(str);
         
-        try {
-            Global.writeLine("IMPRIMIR_CADENA CADENA_"+global.addICString(str)+" null null\n");
-        } catch (IOException ex) {
-            Logger.getLogger(Puts.class.getName()).log(Level.SEVERE, null, ex);
-        }
         return 0;
     }
     
@@ -47,5 +42,13 @@ public class Puts extends Tree{
         direction = dir;
     }
     
+    @Override
+    public void writeIC(Environment e) {
+        try {
+            Global.writeLine("IMPRIMIR_CADENA CADENA_"+global.addICString(str)+" null null\n");
+        } catch (IOException ex) {
+            Logger.getLogger(Puts.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
     
 }

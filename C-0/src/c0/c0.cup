@@ -11,7 +11,7 @@ action code {:
 :}
 
 terminal            PLUS, MINUS, MUL, DIV, ASSIGN, OR, AND, EQUAL, NOTEQUAL, MINOR, MAYOR, BOOL, IF, WHILE, ELSE, INTT;
-terminal            LPAREN, RPAREN, LBRACKET, RBRACKET, QUOTE, SEMICOLON, MAIN, PUTW, PUTS, BREAK, COMA, RETURN;
+terminal            LPAREN, RPAREN, LBRACKET, RBRACKET, QUOTE, SEMICOLON, MAIN, PUTW, PUTS, BREAK, COMA, RETURN, VOID;
 terminal Integer    INT;
 terminal String     IDENT, STRING;
 
@@ -29,15 +29,16 @@ precedence left LPAREN, RPAREN, LBRACKET, RBRACKET, QUOTE, SEMICOLON, MAIN, PUTW
 precedence left ASSIGN;
 precedence left COMA;
 precedence left RETURN;
+precedence left VOID;
 
 expr_list ::= expr_list:e expr:e1        {: RESULT = new MultiExp(e,e1, 1); :}
             | expr:e                     {: RESULT = new MultiExp(e,e, 0); :}
 ;
 
-
-param ::= param:p COMA IDENT:s      {: RESULT = new ParametersCall(s , p);  RESULT.setDirection(Global.directionCount); Global.directionCount++; :}
-        | IDENT:s                   {: RESULT = new ParametersCall(s , null);  RESULT.setDirection(Global.directionCount); Global.directionCount++; :}
+param ::= expr:s COMA param:p       {: RESULT = new ParametersCall(s , p);  RESULT.setDirection(Global.directionCount); Global.directionCount++; :}
+        | expr:s1 COMA expr:s2       {: RESULT = new ParametersCall(s1 , new ParametersCall(s2,null));  RESULT.setDirection(Global.directionCount); Global.directionCount++; :}
 ;
+
 
 expr          ::= expr:e1 PLUS expr:e2 
                     {: RESULT = new Plus(e1, e2); 
@@ -85,8 +86,16 @@ expr          ::= expr:e1 PLUS expr:e2
                        :}
                 | INTT IDENT:s LPAREN paramdef:p RPAREN LBRACKET expr_list:e1 RETURN expr:e2 SEMICOLON RBRACKET
                     {: RESULT = new FunctionDef(s , p , e1, e2);  RESULT.setDirection(Global.directionCount); Global.directionCount++; :}
+                | VOID IDENT:s LPAREN paramdef:p RPAREN LBRACKET expr_list:e1 RBRACKET
+                    {: RESULT = new FunctionDef(s , p , e1, null);  RESULT.setDirection(Global.directionCount); Global.directionCount++; :}
+                | IDENT:s LPAREN param:p RPAREN SEMICOLON
+                    {: RESULT = new FunctionCall(s , p);  RESULT.setDirection(Global.directionCount); Global.directionCount++; :}
                 | IDENT:s LPAREN param:p RPAREN
                     {: RESULT = new FunctionCall(s , p);  RESULT.setDirection(Global.directionCount); Global.directionCount++; :}
+                | IDENT:s LPAREN expr:e RPAREN SEMICOLON
+                    {: RESULT = new FunctionCall(s , new ParametersCall(e,null));  RESULT.setDirection(Global.directionCount); Global.directionCount++; :}
+                | IDENT:s LPAREN expr:e RPAREN
+                    {: RESULT = new FunctionCall(s , new ParametersCall(e,null));  RESULT.setDirection(Global.directionCount); Global.directionCount++; :}
                 | IDENT:s
                     {: RESULT = new Identifier(s);  RESULT.setDirection(Global.directionCount); Global.directionCount++; :}
                 | INT:n
@@ -97,6 +106,7 @@ expr          ::= expr:e1 PLUS expr:e2
                     {: RESULT = new Puts(s);  RESULT.setDirection(Global.directionCount); Global.directionCount++; :}
                 
 ;
+
 
 paramdef ::= paramdef:p COMA INTT IDENT:s      {: RESULT = new ParametersDef(s , p);  RESULT.setDirection(Global.directionCount); Global.directionCount++; :}
         | INTT IDENT:s                   {: RESULT = new ParametersDef(s , null);  RESULT.setDirection(Global.directionCount); Global.directionCount++; :}

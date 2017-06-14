@@ -42,6 +42,7 @@ public class TestFrame extends javax.swing.JFrame {
     private JTextArea jTextArea2;
     private JPanel jPanel1;
     Global global = new Global();
+    private GenFinalCode finalCode;
         
     public TestFrame() {
         initComponents();
@@ -296,6 +297,9 @@ public class TestFrame extends javax.swing.JFrame {
                 
                 tree.eval(env);
                 System.out.println("Exito Evaluando el parsetree");
+                
+                
+                
                 tree.writeIC(env);
                 System.out.println("Exito Escribiendo el IC");
                                 
@@ -322,6 +326,13 @@ public class TestFrame extends javax.swing.JFrame {
                 
                 Global.closeFile();
                 //Codigo Final
+                String ICode = Global.getStringFile();
+                Global.openFile(Global.FILENAMEFINAL);
+                //finalCode.writeFinalCode(ICode);
+                Global.closeFile();
+                System.out.println("Exito Escribiendo Codigo Final");
+
+                
                 //Global.openFile(Global.FILENAMEFINAL);
         } catch (Exception e) {
             jTextArea3.setText("La operación no es válida.");

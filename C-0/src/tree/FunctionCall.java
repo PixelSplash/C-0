@@ -29,20 +29,25 @@ public class FunctionCall extends Tree{
     public Integer eval(Environment e) {
         e.newScopeTable();
         int ret = 0;
+        Function func = Global.getFunction(id);
+
+        ArrayList<Integer> parameterArray = Global.getParameterArray();
+        ArrayList<String> parametersAux = func.getParameters();
+        parameterArray.clear();
         parameters.eval(e);
 
-        Function func = Global.getFunction(id);
         
-        ArrayList<Integer> parameterArray = Global.getParameterArray();
-        ArrayList<String> parameters = func.getParameters();
-        //System.out.println(parameterArray.size() +" " +parameters.size() );
-        if(parameterArray.size() == parameters.size()){
+        
+        
+        System.out.println(parameterArray.size() +" " +parametersAux.size() );
+        if(parameterArray.size() == parametersAux.size()){
             for(int i = 0; i < parameterArray.size(); i++){
                
-                e.add(parameters.get(i), parameterArray.get(i),0,Global.directionCount++);
+                e.add(parametersAux.get(i), parameterArray.get(i),0,Global.directionCount++);
             }
             func.getExpresion().eval(e);
-            ret = func.getRet().eval(e);
+            Tree retexp = func.getRet();
+            ret = (retexp!=null)?retexp.eval(e):null;
         }else{System.out.println("Error de cantidad de parametros");}
         
         e.deleteLastScopeTable();
@@ -64,5 +69,12 @@ public class FunctionCall extends Tree{
     
     @Override
     public void writeIC(Environment e) {
+        try {
+            //int funcCounter = Global.getFuncCounter();
+            parameters.writeIC(e);
+            Global.writeLine("LLAMAR_FUNCION null null FUNCION_" + id + "\n");
+        } catch (IOException ex) {
+            Logger.getLogger(Or.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 }

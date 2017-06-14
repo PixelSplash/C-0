@@ -50,6 +50,10 @@ String         = \"([\x20-\x21\x23-\xFE])*\"
                         global.tokenPool.add("BREAK");
                         return symbol(sym.BREAK); 
                     }
+    "void"         { 
+                        global.tokenPool.add("VOID");
+                        return symbol(sym.VOID); 
+                    }
     "return"         { 
                         global.tokenPool.add("RETURN");
                         return symbol(sym.RETURN); 

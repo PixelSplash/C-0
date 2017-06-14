@@ -14,6 +14,7 @@ import java.io.PrintWriter;
 import java.io.UnsupportedEncodingException;
 import java.io.Writer;
 import java.util.ArrayList;
+import java.util.Scanner;
 import tree.Function;
 import tree.Tree;
 
@@ -120,5 +121,12 @@ public class Global {
             if(x.getId().equals(id))return x;
         }
         return null;
+    }
+
+    public static int getFuncCounter() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+    public static String getStringFile() throws FileNotFoundException{
+        return new Scanner(new File("IntermediateCode.txt")).useDelimiter("\\Z").next();
     }
 }

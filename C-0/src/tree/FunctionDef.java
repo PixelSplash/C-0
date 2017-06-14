@@ -29,7 +29,9 @@ public class FunctionDef extends Tree{
     }
     
     public Integer eval(Environment e) {
-        Global.addFunction(new Function(id, exp, ret));
+        Function func = new Function(id, exp, ret);
+        func.setDirection(direction);
+        Global.addFunction(func);
         parameters.eval(e);
         return 0;
     }
@@ -49,5 +51,20 @@ public class FunctionDef extends Tree{
     
     @Override
     public void writeIC(Environment e) {
+        //System.out.println("Write Function Def");
+        try {
+            //int funcCounter = Global.getFuncCounter();
+            Global.writeLine("ETIQUETA null null FUNCION_" + id+"\n");
+            parameters.writeIC(e);
+            exp.writeIC(e);
+            if(ret!= null){
+                ret.writeIC(e);
+                Global.writeLine("CARGAR_EN_ACUMULADOR " + ret.getDirection() + " null " + this.getDirection()+"\n");
+
+            }
+            Global.writeLine("RETORNO null null null\n");//arreglar
+        } catch (IOException ex) {
+            Logger.getLogger(Or.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 }

@@ -20,6 +20,7 @@ public class ParametersDef extends Tree{
     Tree next;
     Integer direction;    
     public ParametersDef(String l, Tree r){
+        //System.out.println("Se crea param def");
         id = l;
         next = r;
     }
@@ -45,5 +46,14 @@ public class ParametersDef extends Tree{
     
     @Override
     public void writeIC(Environment e) {
+        //System.out.println("Write Parameter Def");
+        try {
+            e.add(id, 0, 0, direction);
+            //direction = e.lookupDir(id);
+            Global.writeLine("SACAR_DE_PILA null  null " + direction + "\n");
+            if(next!=null)next.writeIC(e);
+        } catch (IOException ex) {
+            Logger.getLogger(Or.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 }

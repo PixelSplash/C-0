@@ -16,16 +16,16 @@ import java.util.logging.Logger;
  * @author sescalo
  */
 public class ParametersCall extends Tree{
-    String id;
+    Tree id;
     Tree next;
     Integer direction;    
-    public ParametersCall(String l, Tree r){
+    public ParametersCall(Tree l, Tree r){
         id = l;
         next = r;
     }
     
     public Integer eval(Environment e) {
-        Global.addParameterCall(e.lookup(id));
+        Global.addParameterCall(id.eval(e));
         return 0;
     }
     
@@ -44,5 +44,12 @@ public class ParametersCall extends Tree{
     
     @Override
     public void writeIC(Environment e) {
+        try {
+            id.writeIC(e);
+            Global.writeLine("METER_A_PILA null null " + id.getDirection()+ "\n");
+            if(next!=null)next.writeIC(e);
+        } catch (IOException ex) {
+            Logger.getLogger(Or.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 }

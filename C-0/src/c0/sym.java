@@ -9,11 +9,11 @@ package c0;
 public interface sym {
   /* terminals */
   public static final int AND = 8;
-  public static final int IDENT = 31;
+  public static final int IDENT = 32;
   public static final int SEMICOLON = 23;
   public static final int ELSE = 16;
   public static final int PLUS = 2;
-  public static final int INT = 30;
+  public static final int INT = 31;
   public static final int RPAREN = 19;
   public static final int OR = 7;
   public static final int EQUAL = 9;
@@ -25,7 +25,7 @@ public interface sym {
   public static final int LPAREN = 18;
   public static final int RBRACKET = 21;
   public static final int QUOTE = 22;
-  public static final int STRING = 32;
+  public static final int STRING = 33;
   public static final int COMA = 28;
   public static final int MAYOR = 12;
   public static final int EOF = 0;
@@ -40,6 +40,7 @@ public interface sym {
   public static final int ASSIGN = 6;
   public static final int BOOL = 13;
   public static final int INTT = 17;
+  public static final int VOID = 30;
   public static final int MUL = 4;
   public static final String[] terminalNames = new String[] {
   "EOF",
@@ -72,11 +73,10 @@ public interface sym {
   "BREAK",
   "COMA",
   "RETURN",
+  "VOID",
   "INT",
   "IDENT",
   "STRING"
   };
 }
-
-
 

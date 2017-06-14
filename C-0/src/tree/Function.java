@@ -16,6 +16,11 @@ public class Function {
     private String id;
     private Tree expresion;
     private Tree ret;
+    private int direction;
+
+    public void setDirection(int direction) {
+        this.direction = direction;
+    }
 
     public Tree getRet() {
         return ret;
@@ -58,6 +63,10 @@ public class Function {
         this.id = id;
         expresion = exp;
         ret = r;
+    }
+
+    public int getDirection() {
+        return direction;
     }
     
 }

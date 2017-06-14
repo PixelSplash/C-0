@@ -59,7 +59,7 @@ public class While extends Tree{
     public void writeIC(Environment e) {
         int whileCounter = Global.getWhileCounter();
         try {
-            Global.writeLine("ETIQUETA null null BLUCLE_" + whileCounter + "\n");
+            Global.writeLine("ETIQUETA null null BUCLE_" + whileCounter + "\n");
             left.writeIC(e);
             Global.writeLine("SALTAR_CONDICION " + left.getDirection() + " null FINBUCLE_" + whileCounter + "\n");
             right.writeIC(e);

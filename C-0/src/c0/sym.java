@@ -9,22 +9,24 @@ package c0;
 public interface sym {
   /* terminals */
   public static final int AND = 8;
-  public static final int IDENT = 29;
+  public static final int IDENT = 31;
   public static final int SEMICOLON = 23;
   public static final int ELSE = 16;
   public static final int PLUS = 2;
-  public static final int INT = 28;
+  public static final int INT = 30;
   public static final int RPAREN = 19;
   public static final int OR = 7;
   public static final int EQUAL = 9;
   public static final int NOTEQUAL = 10;
   public static final int WHILE = 15;
+  public static final int RETURN = 29;
   public static final int IF = 14;
   public static final int LBRACKET = 20;
   public static final int LPAREN = 18;
   public static final int RBRACKET = 21;
   public static final int QUOTE = 22;
-  public static final int STRING = 30;
+  public static final int STRING = 32;
+  public static final int COMA = 28;
   public static final int MAYOR = 12;
   public static final int EOF = 0;
   public static final int MAIN = 24;
@@ -68,9 +70,13 @@ public interface sym {
   "PUTW",
   "PUTS",
   "BREAK",
+  "COMA",
+  "RETURN",
   "INT",
   "IDENT",
   "STRING"
   };
 }
+
+
 

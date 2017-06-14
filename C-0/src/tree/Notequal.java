@@ -59,7 +59,7 @@ public class Notequal extends Tree{
         try {
             left.writeIC(e);
             right.writeIC(e);
-            Global.writeLine("NO IGUAL " + left.getDirection() + " " + right.getDirection() + " " + this.getDirection()+"\n");
+            Global.writeLine("DISTINTO " + left.getDirection() + " " + right.getDirection() + " " + this.getDirection()+"\n");
         } catch (IOException ex) {
             Logger.getLogger(Notequal.class.getName()).log(Level.SEVERE, null, ex);
         }

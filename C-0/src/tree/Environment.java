@@ -34,7 +34,7 @@ public class Environment {
 
     public void add(String var, Integer val, int type, int dir) {
         if(lookup(var) != null){
-            System.out.println("Error sobrescribir variable");
+            System.out.println("Error sobrescribir variable " + var);
         }else{
             _symbolTable.get(_symbolTable.size()-1).add(new SymbolEnv( val, var, type, dir));
         }
@@ -56,7 +56,7 @@ public class Environment {
             }
         }
         if(!exist){
-            System.out.println("Error no existe variable");
+            System.out.println("Error no existe variable " + var);
         }
     }
     public void deleteLastScopeTable(){

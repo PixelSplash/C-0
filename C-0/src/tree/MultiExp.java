@@ -19,7 +19,6 @@ public class MultiExp extends Tree {
         return 0;
     }
     public void print() {
-        System.out.print("MultiExp");
     }
 
     @Override

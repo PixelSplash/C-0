@@ -50,6 +50,10 @@ String         = \"([\x20-\x21\x23-\xFE])*\"
                         global.tokenPool.add("BREAK");
                         return symbol(sym.BREAK); 
                     }
+    "return"         { 
+                        global.tokenPool.add("RETURN");
+                        return symbol(sym.RETURN); 
+                    }
     "main"          { 
                         global.tokenPool.add("MAIN");
                         return symbol(sym.MAIN); 
@@ -159,6 +163,10 @@ String         = \"([\x20-\x21\x23-\xFE])*\"
     "\""            { 
                         global.tokenPool.add("QUOTE");
                         return symbol(sym.QUOTE); 
+                    }
+    ","            { 
+                        global.tokenPool.add("COMA");
+                        return symbol(sym.COMA); 
                     }
 
     {WhiteSpace} {}

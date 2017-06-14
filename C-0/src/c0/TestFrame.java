@@ -284,17 +284,20 @@ public class TestFrame extends javax.swing.JFrame {
                 parser p = new parser(lexer);
 
                 Symbol s = p.parse();
-
+                System.out.println("Exito en el Parseo");
                 Tree tree = (Tree) s.value;
+                
 
                 //env.print();
-                tree.print();
+                //tree.print();
 
            
                 //System.out.println("SALIDAS:");
                 
                 tree.eval(env);
+                System.out.println("Exito Evaluando el parsetree");
                 tree.writeIC(env);
+                System.out.println("Exito Escribiendo el IC");
                                 
                 //OutputPool
                 line = "";

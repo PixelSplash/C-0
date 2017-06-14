@@ -14,15 +14,18 @@ import java.io.IOException;
 public class GenFinalCode {
     
     public void writeFinalCode(String ICode) throws IOException{
-        String[] newICode = ICode.split(System.getProperty("line.separator"));
+        String[] newICode = ICode.split("\n");
         String spaceLine = 
                 "                                        ";
+        //System.err.println(newICode.length);
         for (String x : newICode) {
+            
             String[] line = x.split("\\s+");
             String instruction = line[0];
             String op1 = line[1];
             String op2 = line[2];
             String res = x.substring(instruction.length()+op1.length()+op2.length()+3);
+            System.out.println(instruction);
             switch(instruction) {
                 case "CARGAR_DIRECCION":
                     Global.writeLine(spaceLine+"MOVE /"+op1+" , /"+res+"\n");
@@ -114,6 +117,9 @@ public class GenFinalCode {
                     break;
                 case "RETORNO":
                     Global.writeLine(spaceLine+"RET\n");
+                    break;
+                case "CARGAR_EN_ACUMULADOR":
+                    Global.writeLine(spaceLine+"MOVE .A , /"+op1+"\n");
                     break;
                 case "FIN":
                     break;

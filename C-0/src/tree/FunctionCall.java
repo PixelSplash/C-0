@@ -39,11 +39,12 @@ public class FunctionCall extends Tree{
         
         
         
-        System.out.println(parameterArray.size() +" " +parametersAux.size() );
+        //System.out.println(parameterArray.size() +" " +parametersAux.size() );
         if(parameterArray.size() == parametersAux.size()){
+            int aux = parameterArray.size()-1;
             for(int i = 0; i < parameterArray.size(); i++){
                
-                e.add(parametersAux.get(i), parameterArray.get(i),0,Global.directionCount++);
+                e.add(parametersAux.get(i), parameterArray.get(aux-i),0,Global.directionCount++);
             }
             func.getExpresion().eval(e);
             Tree retexp = func.getRet();

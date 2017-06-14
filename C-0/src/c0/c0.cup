@@ -35,8 +35,8 @@ expr_list ::= expr_list:e expr:e1        {: RESULT = new MultiExp(e,e1, 1); :}
             | expr:e                     {: RESULT = new MultiExp(e,e, 0); :}
 ;
 
-param ::= expr:s COMA param:p       {: RESULT = new ParametersCall(s , p);  RESULT.setDirection(Global.directionCount); Global.directionCount++; :}
-        | expr:s1 COMA expr:s2       {: RESULT = new ParametersCall(s1 , new ParametersCall(s2,null));  RESULT.setDirection(Global.directionCount); Global.directionCount++; :}
+param ::= expr:s1 COMA expr:s2       {: RESULT = new ParametersCall(s1 , new ParametersCall(s2,null));  RESULT.setDirection(Global.directionCount); Global.directionCount++; :}
+        | expr:s COMA param:p       {: RESULT = new ParametersCall(s , p);  RESULT.setDirection(Global.directionCount); Global.directionCount++; :}
 ;
 
 

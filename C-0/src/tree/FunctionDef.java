@@ -59,7 +59,7 @@ public class FunctionDef extends Tree{
             exp.writeIC(e);
             if(ret!= null){
                 ret.writeIC(e);
-                Global.writeLine("CARGAR_EN_ACUMULADOR " + ret.getDirection() + " null " + this.getDirection()+"\n");
+                Global.writeLine("CARGAR_EN_ACUMULADOR " + ret.getDirection() + " null null\n");
 
             }
             Global.writeLine("RETORNO null null null\n");//arreglar

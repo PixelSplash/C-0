@@ -239,9 +239,9 @@ public class parser extends java_cup.runtime.lr_parser {
     "\015\uffe5\016\uffe5\020\uffe5\021\uffe5\023\uffe5\024\uffe5\025" +
     "\uffe5\027\uffe5\031\uffe5\032\uffe5\033\uffe5\034\uffe5\035\uffe5" +
     "\036\uffe5\037\uffe5\040\uffe5\041\uffe5\042\uffe5\001\002\000" +
-    "\004\025\ufffe\001\002\000\032\004\030\005\023\006\034" +
+    "\004\025\ufffd\001\002\000\032\004\030\005\023\006\034" +
     "\007\032\011\035\012\024\013\027\014\025\015\026\016" +
-    "\031\025\ufffd\036\123\001\002\000\070\002\uffe6\004\uffe6" +
+    "\031\025\ufffe\036\123\001\002\000\070\002\uffe6\004\uffe6" +
     "\005\uffe6\006\uffe6\007\uffe6\011\uffe6\012\uffe6\013\uffe6\014" +
     "\uffe6\015\uffe6\016\uffe6\020\uffe6\021\uffe6\023\uffe6\024\uffe6" +
     "\025\uffe6\027\uffe6\031\uffe6\032\uffe6\033\uffe6\034\uffe6\035" +
@@ -443,22 +443,7 @@ class CUP$parser$actions {
           return CUP$parser$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
-          case 3: // param ::= expr COMA param 
-            {
-              Tree RESULT =null;
-		int sleft = ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-2)).left;
-		int sright = ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-2)).right;
-		Tree s = (Tree)((java_cup.runtime.Symbol) CUP$parser$stack.elementAt(CUP$parser$top-2)).value;
-		int pleft = ((java_cup.runtime.Symbol)CUP$parser$stack.peek()).left;
-		int pright = ((java_cup.runtime.Symbol)CUP$parser$stack.peek()).right;
-		Tree p = (Tree)((java_cup.runtime.Symbol) CUP$parser$stack.peek()).value;
-		 RESULT = new ParametersCall(s , p);  RESULT.setDirection(Global.directionCount); Global.directionCount++; 
-              CUP$parser$result = parser.getSymbolFactory().newSymbol("param",2, ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-2)), ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), RESULT);
-            }
-          return CUP$parser$result;
-
-          /*. . . . . . . . . . . . . . . . . . . .*/
-          case 4: // param ::= expr COMA expr 
+          case 3: // param ::= expr COMA expr 
             {
               Tree RESULT =null;
 		int s1left = ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-2)).left;
@@ -468,6 +453,21 @@ class CUP$parser$actions {
 		int s2right = ((java_cup.runtime.Symbol)CUP$parser$stack.peek()).right;
 		Tree s2 = (Tree)((java_cup.runtime.Symbol) CUP$parser$stack.peek()).value;
 		 RESULT = new ParametersCall(s1 , new ParametersCall(s2,null));  RESULT.setDirection(Global.directionCount); Global.directionCount++; 
+              CUP$parser$result = parser.getSymbolFactory().newSymbol("param",2, ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-2)), ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), RESULT);
+            }
+          return CUP$parser$result;
+
+          /*. . . . . . . . . . . . . . . . . . . .*/
+          case 4: // param ::= expr COMA param 
+            {
+              Tree RESULT =null;
+		int sleft = ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-2)).left;
+		int sright = ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-2)).right;
+		Tree s = (Tree)((java_cup.runtime.Symbol) CUP$parser$stack.elementAt(CUP$parser$top-2)).value;
+		int pleft = ((java_cup.runtime.Symbol)CUP$parser$stack.peek()).left;
+		int pright = ((java_cup.runtime.Symbol)CUP$parser$stack.peek()).right;
+		Tree p = (Tree)((java_cup.runtime.Symbol) CUP$parser$stack.peek()).value;
+		 RESULT = new ParametersCall(s , p);  RESULT.setDirection(Global.directionCount); Global.directionCount++; 
               CUP$parser$result = parser.getSymbolFactory().newSymbol("param",2, ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-2)), ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), RESULT);
             }
           return CUP$parser$result;

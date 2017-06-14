@@ -26,6 +26,7 @@ public class ParametersCall extends Tree{
     
     public Integer eval(Environment e) {
         Global.addParameterCall(id.eval(e));
+        if(next!=null)next.eval(e);
         return 0;
     }
     

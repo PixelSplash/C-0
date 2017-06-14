@@ -42,7 +42,7 @@ public class TestFrame extends javax.swing.JFrame {
     private JTextArea jTextArea2;
     private JPanel jPanel1;
     Global global = new Global();
-    private GenFinalCode finalCode;
+    private GenFinalCode finalCode = new GenFinalCode();
         
     public TestFrame() {
         initComponents();
@@ -328,15 +328,16 @@ public class TestFrame extends javax.swing.JFrame {
                 //Codigo Final
                 String ICode = Global.getStringFile();
                 Global.openFile(Global.FILENAMEFINAL);
-                //finalCode.writeFinalCode(ICode);
+                //System.out.println(ICode);
+                finalCode.writeFinalCode(ICode);
                 Global.closeFile();
                 System.out.println("Exito Escribiendo Codigo Final");
 
                 
                 //Global.openFile(Global.FILENAMEFINAL);
         } catch (Exception e) {
-            jTextArea3.setText("La operación no es válida.");
-            System.out.println("Error de parseo.");
+            //jTextArea3.setText("La operación no es válida.");
+            //System.out.println("Error de parseo.");
             System.out.println(e);
         };
     }//GEN-LAST:event_RunActionPerformed
